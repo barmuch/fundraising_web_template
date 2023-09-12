@@ -1,8 +1,8 @@
-const Place = require("../models/place");
-const fs = require('fs');
-const hereMaps = require('../utils/hereMaps');
+import Place from "../models/place.js";
+import fs from 'fs';
 
-module.exports.index = async (req, res) => {
+
+const index = async (req, res) => {
     const places = await Place.find();
     const clusterPlaces = places.map(place => {
         return {
@@ -14,13 +14,12 @@ module.exports.index = async (req, res) => {
     res.render('places/index', { places, cluster });
 }
 
-module.exports.create = (req, res) => {
+const create = (req, res) => {
     res.render('places/create');
 }
 
-module.exports.store = async (req, res, next) => {
+const store = async (req, res, next) => {
     const images = req.files.map(file => ({ url: file.path, filename: file.filename }));
-    const geoData = await hereMaps.geometry(req.body.place.location);
 
     const place = new Place(req.body.place);
     place.author = req.user._id
@@ -34,7 +33,7 @@ module.exports.store = async (req, res, next) => {
 }
 
 
-module.exports.show = async (req, res) => {
+const show = async (req, res) => {
     const place = await Place.findById(req.params.id)
         .populate({
             path: 'reviews',
@@ -46,12 +45,12 @@ module.exports.show = async (req, res) => {
     res.render('places/show', { place });
 }
 
-module.exports.edit = async (req, res) => {
+const edit = async (req, res) => {
     const place = await Place.findById(req.params.id);
     res.render('places/edit', { place });
 }
 
-module.exports.update = async (req, res) => {
+const update = async (req, res) => {
     const { id } = req.params;
     const place = await Place.findByIdAndUpdate(id, { ...req.body.place });
 
@@ -69,7 +68,7 @@ module.exports.update = async (req, res) => {
     res.redirect(`/places/${place._id}`);
 }
 
-module.exports.destroy = async (req, res) => {
+const destroy = async (req, res) => {
     const { id } = req.params
     const place = await Place.findById(id);
 
@@ -84,7 +83,7 @@ module.exports.destroy = async (req, res) => {
     res.redirect('/places');
 }
 
-module.exports.destroyImages = async (req, res) => {
+const destroyImages = async (req, res) => {
     try {
         const { id } = req.params
         const { images } = req.body
@@ -120,4 +119,8 @@ module.exports.destroyImages = async (req, res) => {
         req.flash('error_msg', 'Failed to delete images');
         return res.redirect(`/places/${id}/edit`);
     }
+}
+
+export {
+    index, create, store, show, edit, update, destroy, destroyImages
 }

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-module.exports = (url) => {
+export default (url) => {
     return (req, res, next) => {
         const paramId = ['id', 'place_id', 'review_id'].find(param => req.params[param]);
 

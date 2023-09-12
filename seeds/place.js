@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Place = require('../models/place');
-const hereMaps = require('../utils/hereMaps');
+import mongoose from 'mongoose';
+import Place from '../models/place';
+import hereMaps from '../utils/hereMaps';
 
 mongoose.connect('mongodb://127.0.0.1/yelp_clone')
     .then((result) => {

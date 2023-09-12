@@ -1,6 +1,6 @@
-const Joi = require('joi')
+import Joi from 'joi'
 
-module.exports.placeSchema = Joi.object({
+export const placeSchema = Joi.object({
     place: Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),

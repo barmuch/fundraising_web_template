@@ -1,11 +1,11 @@
-const express = require('express')
-const wrapAsync = require('../utils/wrapAsync');
-const PlaceController = require('../controllers/places')
-const isValidObjectId = require('../middlewares/isValidObjectId');
-const isAuth = require('../middlewares/isAuth');
-const validatePlace = require('../middlewares/validatePlace');
-const { isAuthorPlace } = require('../middlewares/isAuthor');
-const upload = require('../configs/multer');
+import express from 'express'
+import wrapAsync from '../utils/wrapAsync.js';
+import * as PlaceController from '../controllers/places.js'
+import isValidObjectId from '../middlewares/isValidObjectId.js';
+import isAuth from '../middlewares/isAuth.js';
+import validatePlace from '../middlewares/validatePlace.js';
+import { isAuthorPlace } from '../middlewares/isAuthor.js';
+import upload from '../configs/multer.js';
 const router = express.Router();
 
 router.route('/')
@@ -23,4 +23,4 @@ router.get('/:id/edit', isAuth, isAuthorPlace, isValidObjectId('/places'), wrapA
 
 router.delete('/:id/images', wrapAsync(PlaceController.destroyImages))
 
-module.exports = router;
+export default router;

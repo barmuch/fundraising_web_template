@@ -1,7 +1,7 @@
-const Place = require("../models/place");
-const Review = require("../models/review");
+import Place from "../models/place.js";
+import Review from "../models/review.js";
 
-module.exports.isAuthorPlace = async (req, res, next) => {
+export const isAuthorPlace = async (req, res, next) => {
     const { id } = req.params;
     const place = await Place.findById(id);
 
@@ -12,7 +12,7 @@ module.exports.isAuthorPlace = async (req, res, next) => {
     next();
 }
 
-module.exports.isAuthorReview = async (req, res, next) => {
+export const isAuthorReview = async (req, res, next) => {
     const { place_id, review_id } = req.params;
     const place = await Review.findById(review_id);
 

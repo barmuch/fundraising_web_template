@@ -1,24 +1,35 @@
-const ejsMate = require('ejs-mate')
-const express = require('express');
-const session = require('express-session');
-const flash = require('connect-flash');
-const ExpressError = require('./utils/ExpressError');
-const methodOverride = require('method-override');
-const mongoose = require('mongoose');
-const path = require('path');
-const app = express();
-const passport = require('passport')
-const LocalStrategy = require('passport-local')
-const User = require('./models/user');
-const hereMaps = require('./utils/hereMaps');
+import ejsMate from 'ejs-mate'
+import express from 'express';
+import session from 'express-session';
+import flash from 'connect-flash';
+import ExpressError from './utils/ExpressError.js';
+import methodOverride from 'method-override';
+import mongoose from 'mongoose';
+import path from 'path';
+import passport from 'passport'
+import LocalStrategy from 'passport-local'
+import User from './models/user.js';
+import { fileURLToPath } from 'url'
+import routerUser from './routes/user.js';
+import routerReview from './routes/reviews.js';
+import routerPlaces from './routes/places.js';
+import dotenv from 'dotenv'
 
+dotenv.config()
+
+const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const port = process.env.PORT
+const db_URI = process.env.DB_URI
 // connect to mongodb
-mongoose.connect('mongodb://127.0.0.1/yelp_clone')
-	.then((result) => {
-		console.log('connected to mongodb')
-	}).catch((err) => {
-		console.log(err)
-	});
+mongoose.connect(db_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to the database...')
+  })
+  .catch((error) => {
+    console.error('Connection error:', error)
+  })
 
 // view engine
 app.engine('ejs', ejsMate)
@@ -60,9 +71,9 @@ app.get('/', async (req, res) => {
 });
 
 // places routes
-app.use('/', require('./routes/user'))
-app.use('/places', require('./routes/places'));
-app.use('/places/:place_id/reviews', require('./routes/reviews'));
+app.use('/', routerUser)
+app.use('/places', routerPlaces);
+app.use('/places/:place_id/reviews', routerReview);
 
 
 app.all('*', (req, res, next) => {
@@ -75,6 +86,6 @@ app.use((err, req, res, next) => {
 	res.status(statusCode).render('error', { err });
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
 	console.log(`server is running on http://127.0.0.1:3000`);
 });

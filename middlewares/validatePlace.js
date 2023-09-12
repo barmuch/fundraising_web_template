@@ -1,8 +1,8 @@
 
-const { placeSchema } = require('../schemas/place');
-const ExpressError = require('../utils/ExpressError');
+import  {placeSchema} from '../schemas/place.js';
+import ExpressError from '../utils/ExpressError.js';
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
     const { error } = placeSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')

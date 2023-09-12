@@ -1,7 +1,7 @@
-const ExpressError = require('../utils/ExpressError');
-const { reviewSchema } = require('../schemas/review');
+import ExpressError from '../utils/ExpressError.js';
+import {reviewSchema} from '../schemas/review.js';
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')

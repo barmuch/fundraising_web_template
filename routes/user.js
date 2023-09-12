@@ -1,9 +1,9 @@
-const express = require('express');
+import express from'express';
 const router = express.Router();
-const User = require('../models/user');
-const AuthController = require('../controllers/auth')
-const wrapAsync = require('../utils/wrapAsync');
-const passport = require('passport');
+// import User from'../models/user.js';
+import * as AuthController from'../controllers/auth.js';
+import wrapAsync from'../utils/wrapAsync.js';
+import passport from'passport';
 
 router.route('/register')
     .get((req, res) => {
@@ -24,4 +24,4 @@ router.route('/login')
 router.post('/logout', AuthController.logout)
 
 
-module.exports = router;
+export default router;

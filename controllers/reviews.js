@@ -1,7 +1,7 @@
-const Place = require("../models/place");
-const Review = require("../models/review");
+import Place from "../models/place.js";
+import Review from "../models/review.js";
 
-module.exports.store = async (req, res) => {
+const store = async (req, res) => {
     const { place_id } = req.params;
 
     const review = new Review(req.body.review);
@@ -17,10 +17,12 @@ module.exports.store = async (req, res) => {
     res.redirect(`/places/${place_id}`);
 }
 
-module.exports.destroy = async (req, res) => {
+const destroy = async (req, res) => {
     const { place_id, review_id } = req.params;
     await Place.findByIdAndUpdate(place_id, { $pull: { reviews: review_id } });
     await Review.findByIdAndDelete(review_id);
     req.flash('success_msg', 'Review Deleted!');
     res.redirect(`/places/${place_id}`);
 }
+
+export {store, destroy}

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const Schema = mongoose.Schema
-const Review = require('./review')
+import Review from './review.js'
 
 const placeSchema = new Schema({
     title: String,
@@ -46,4 +46,4 @@ placeSchema.post('findOneAndDelete', async function (doc) {
     }
 })
 
-module.exports = mongoose.model('Place', placeSchema)
+export default mongoose.model('Place', placeSchema)
