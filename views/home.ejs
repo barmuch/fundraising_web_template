@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Fundraising Web</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="16x16" />
+  
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html"><img src="assets/img/Logo web 4.png"></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Beranda</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="program.html">Program</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Donasi
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="zakat-profesi.html">Zakat Profesi</a></li>
+              <li><a class="dropdown-item" href="#">Zakat Harta</a></li>
+            </ul>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link " href="berita.html">Berita</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link " href="blog-grid.html">Reseller Kebaikan</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Kontak</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <form action="/logout" method="POST" style="display: none" id="logout-form"></form>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+  <!-- ======= Intro Section ======= -->
+  <div class="intro intro-carousel swiper position-relative">
+
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-1.jpg)">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <h1 class="intro-title mb-4 ">
+                      <span class="span1">BERSATU MENEBAR KEBAIKAN</span> bersama
+                      <span class="span2">LAZ BUNYAN </span> 
+                      <br> 
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="contact.html"><span class="price-a">Kontak Kami</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-2.jpg)">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <h1 class="intro-title mb-4">
+                      Program Bunyan Peduli
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="program-bunyan-peduli.html"><span class="price-a">Donasi</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-3.jpg)">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <h1 class="intro-title mb-4">
+                      Program Beasiswa Penghafal Qur'an
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="program-beasiswa-alqur'an.html"><span class="price-a">Donasi</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div><!-- End Intro Section -->
+
+  
+
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">LAZ BUNYAN</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                <p>LAZ Bunyan adalah Lembaga Amil Zakat resmi dibawah naungan Yayasan Bunyan Auladia Cemerlang yang berkerja sama dengan LAZNAS IZI (Inisiatif Zakat Indonesia) dengan harapan dapat meningkatkan profesionalitas dan akuntabilitas pengelolaan Zakat, Infaq, Shodaqoh dan Wakaf guna menjaga kepercayaan para donatur.</p>
+                <p>LAZ Bunyan didirikan pada tahun 2019, secara hukum lembaga memiliki legalitas resmi yang senantiasa berkhidmat untuk mewadahi dan mengoptimalkan potensi Zakat, Infaq, Shodaqoh dan Wakaf yang kemudian di kelola dan disalurkan dalam berbagai program keummatan terutama dalam program mencetak ulama pejuang dan hafidz Qur'an  serta solidaritas sosial kemanusiaan.</p>
+              </p>
+            </div>
+            <div class="w-footer-a">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="https://www.facebook.com/lazbunyan.izi/">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://api.whatsapp.com/send?phone=%2B6285282979857&fbclid=IwAR2FDaq5BE4ZgBA4Mj3NtWD3XR-3GLNJpDKEYST29cONifWmLppw3TcZgfQ">
+                  <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.instagram.com/lazbunyan/">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.youtube.com/channel/UCkwC2s2p3tRAr6AZplGsEfw">
+                  <i class="bi bi-youtube" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">LAZ BUNYAN</span> All Rights Reserved.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+  
+
+  <!-- Template Main JS File -->
+  <script src="/js/main.js"></script>
+
+</body>
+
+</html>

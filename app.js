@@ -30,15 +30,10 @@ mongoose.connect(db_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((error) => {
     console.error('Connection error:', error)
   })
-
-// view engine
-app.engine('ejs', ejsMate)
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
 // middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
 	secret: 'this-is-a-secret-key',
@@ -65,6 +60,13 @@ app.use((req, res, next) => {
 	res.locals.error = req.flash('error');
 	next();
 })
+
+// view engine
+app.engine('ejs', ejsMate)
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+
 
 app.get('/', async (req, res) => {
 	res.render('home');
