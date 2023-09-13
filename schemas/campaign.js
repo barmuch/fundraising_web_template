@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-export const placeSchema = Joi.object({
+export const campaignSchema = Joi.object({
     place: Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),

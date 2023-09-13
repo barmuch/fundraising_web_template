@@ -1,4 +1,4 @@
-import Place from "../models/place.js";
+import Place from "../models/campaign.js";
 import Review from "../models/review.js";
 
 export const isAuthorPlace = async (req, res, next) => {

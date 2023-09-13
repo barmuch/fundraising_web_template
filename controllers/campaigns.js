@@ -1,17 +1,11 @@
-import Place from "../models/place.js";
+
+import Campaign from "../models/campaign.js";
 import fs from 'fs';
 
 
-const index = async (req, res) => {
-    const places = await Place.find();
-    const clusterPlaces = places.map(place => {
-        return {
-            lat: place.geometry.coordinates[1],
-            lng: place.geometry.coordinates[0]
-        }
-    })
-    const cluster = JSON.stringify(clusterPlaces)
-    res.render('places/index', { places, cluster });
+const home = async (req, res) => {
+    const campaigns = await Campaign.find();
+    res.render('home', {campaigns});
 }
 
 const create = (req, res) => {
@@ -122,5 +116,5 @@ const destroyImages = async (req, res) => {
 }
 
 export {
-    index, create, store, show, edit, update, destroy, destroyImages
+    home, create, store, show, edit, update, destroy, destroyImages
 }

@@ -2,18 +2,22 @@ import ejsMate from 'ejs-mate'
 import express from 'express';
 import session from 'express-session';
 import flash from 'connect-flash';
-import ExpressError from './utils/ExpressError.js';
 import methodOverride from 'method-override';
 import mongoose from 'mongoose';
 import path from 'path';
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
-import User from './models/user.js';
 import { fileURLToPath } from 'url'
+import dotenv from 'dotenv'
+
+//module
+import ExpressError from './utils/ExpressError.js';
+import wrapAsync from "./utils/wrapAsync.js"
+import Campaign from './models/campaign.js'
 import routerUser from './routes/user.js';
 import routerReview from './routes/reviews.js';
-import routerPlaces from './routes/places.js';
-import dotenv from 'dotenv'
+import routerCampaign from './routes/campaign.js';
+import User from './models/user.js';
 
 dotenv.config()
 
@@ -68,13 +72,14 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 
-app.get('/', async (req, res) => {
-	res.render('home');
-});
+app.get('/', wrapAsync(async (req, res) => {
+    const campaigns = await Campaign.find()
+    res.render('home', {campaigns})
+}))
 
 // places routes
 app.use('/', routerUser)
-app.use('/places', routerPlaces);
+app.use('/', routerCampaign);
 app.use('/places/:place_id/reviews', routerReview);
 
 

@@ -46,7 +46,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="program.html">Program</a>
+            <a class="nav-link " href="campaign.html">Program</a>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -157,6 +157,76 @@
     <div class="swiper-pagination"></div>
   </div><!-- End Intro Section -->
 
+  <!-- Campaigns Start -->
+  <section class="section-property section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Program</h2>
+              <a href="/programs/create">create</a>
+            </div>
+            <div class="title-link">
+              <a href="program.html">Selengkapnya
+                <span class="bi bi-chevron-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="property-carousel" class="swiper">
+        <div class="swiper-wrapper">
+          <% for (const campaign of campaigns) { %>
+            <div class="carousel-item-b swiper-slide">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="/assets/uploads/campaign.poster" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="/campaigns/<%=campaign._id %>"><%= campaign.title %></a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><%= campaign.deskripsi %>
+                    </div>
+                  </div>
+                  <a href="/campaigns/<%=campaign._id %>" class="link-a">Donasi
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Dana Terkumpul</h4>
+                      <span>Rp.3.546.469,-
+                      </span>
+                    </li>
+                  
+                    <li>
+                      <h4 class="card-info-title">Target</h4>
+                      <span>Rp.100.000.000,-</span>
+                    </li>                     
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+            </div>
+        <% } %>
+        </div>
+      </div>
+      
+      <div class="propery-carousel-pagination carousel-pagination"></div>
+
+    </div>
+  </section>
+  <!-- Campaigns End -->
   
 
   <!-- ======= Footer ======= -->
@@ -171,7 +241,7 @@
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
                 <p>LAZ Bunyan adalah Lembaga Amil Zakat resmi dibawah naungan Yayasan Bunyan Auladia Cemerlang yang berkerja sama dengan LAZNAS IZI (Inisiatif Zakat Indonesia) dengan harapan dapat meningkatkan profesionalitas dan akuntabilitas pengelolaan Zakat, Infaq, Shodaqoh dan Wakaf guna menjaga kepercayaan para donatur.</p>
-                <p>LAZ Bunyan didirikan pada tahun 2019, secara hukum lembaga memiliki legalitas resmi yang senantiasa berkhidmat untuk mewadahi dan mengoptimalkan potensi Zakat, Infaq, Shodaqoh dan Wakaf yang kemudian di kelola dan disalurkan dalam berbagai program keummatan terutama dalam program mencetak ulama pejuang dan hafidz Qur'an  serta solidaritas sosial kemanusiaan.</p>
+                <p>LAZ Bunyan didirikan pada tahun 2019, secara hukum lembaga memiliki legalitas resmi yang senantiasa berkhidmat untuk mewadahi dan mengoptimalkan potensi Zakat, Infaq, Shodaqoh dan Wakaf yang kemudian di kelola dan disalurkan dalam berbagai campaign keummatan terutama dalam campaign mencetak ulama pejuang dan hafidz Qur'an  serta solidaritas sosial kemanusiaan.</p>
               </p>
             </div>
             <div class="w-footer-a">

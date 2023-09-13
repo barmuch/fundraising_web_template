@@ -1,6 +1,6 @@
 import express from 'express'
 import wrapAsync from '../utils/wrapAsync.js';
-import Place from '../models/place.js';
+import Place from '../models/campaign.js';
 import Review from '../models/review.js';
 import * as ReviewController from '../controllers/reviews.js';
 import isValidObjectId from '../middlewares/isValidObjectId.js';
