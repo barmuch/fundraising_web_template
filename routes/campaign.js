@@ -13,7 +13,7 @@ router.route('/')
     .get(wrapAsync(CampaignController.home))
     .post(isAuth, upload.array('image', 5), validateCampaign, wrapAsync(CampaignController.store))
 
-router.get('/create', isAuth, CampaignController.create)
+router.get('/campaigns/create', CampaignController.create)
 
 router.route('/:id')
     .get(isValidObjectId('/places'), wrapAsync(CampaignController.show))

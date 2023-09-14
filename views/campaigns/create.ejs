@@ -1,9 +1,9 @@
 <% layout('layouts/app') %>
-
-<div class="row">
+<section class="section mt-5 mb-5">
+    <div class="row">
     <h1 class="text-center">Add Place</h1>
     <div class="col-6 offset-3">
-        <form action="/places" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+        <form action="/campaign" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="place[title]" id="title" class="form-control" required>
@@ -57,5 +57,5 @@
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
-</div>
-
+    </div>
+</section>

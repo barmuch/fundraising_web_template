@@ -9,7 +9,7 @@ const home = async (req, res) => {
 }
 
 const create = (req, res) => {
-    res.render('places/create');
+    res.render('campaigns/create.ejs');
 }
 
 const store = async (req, res, next) => {
