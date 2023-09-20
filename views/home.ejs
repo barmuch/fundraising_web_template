@@ -1,88 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<% layout('layouts/app') %>
 
-  <title>Fundraising Web</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-
-  <!-- favicon -->
-  <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="16x16" />
-  
-  <!-- Vendor CSS Files -->
-  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="/css/style.css" rel="stylesheet">
-</head>
-
-<body>
-
-    
-  <!-- ======= Header/Navbar ======= -->
-  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a class="navbar-brand text-brand" href="index.html"><img src="assets/img/Logo web 4.png"></a>
-
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
-
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">Beranda</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link " href="campaign.html">Program</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Donasi
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="zakat-profesi.html">Zakat Profesi</a></li>
-              <li><a class="dropdown-item" href="#">Zakat Harta</a></li>
-            </ul>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link " href="berita.html">Berita</a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link " href="blog-grid.html">Reseller Kebaikan</a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link " href="contact.html">Kontak</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link " href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="/register">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-            <form action="/logout" method="POST" style="display: none" id="logout-form"></form>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </nav><!-- End Header/Navbar -->
   <!-- ======= Intro Section ======= -->
   <div class="intro intro-carousel swiper position-relative">
 
@@ -164,8 +82,8 @@
         <div class="col-md-12">
           <div class="title-wrap d-flex justify-content-between">
             <div class="title-box">
-              <h2 class="title-a">Program</h2>
-              <a href="/campaigns/create">create</a>
+              <h2 class="title-a">Campaign</h2>
+              <a href="/campaigns/index">Kelola Campaign</a>
             </div>
             <div class="title-link">
               <a href="program.html">Selengkapnya
@@ -182,7 +100,9 @@
             <div class="carousel-item-b swiper-slide">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="/assets/uploads/campaign.poster" alt="" class="img-a img-fluid">
+              <% for (const image of campaign.images) { %>
+                <img src="/images/<%= image.filename %>" alt="" class="img-a img-fluid">
+              <% } %>
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
@@ -228,83 +148,77 @@
   </section>
   <!-- Campaigns End -->
   
-
-  <!-- ======= Footer ======= -->
-  <section class="section-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-12">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">LAZ BUNYAN</h3>
-            </div>
-            <div class="w-body-a">
-              <p class="w-text-a color-text-a">
-                <p>LAZ Bunyan adalah Lembaga Amil Zakat resmi dibawah naungan Yayasan Bunyan Auladia Cemerlang yang berkerja sama dengan LAZNAS IZI (Inisiatif Zakat Indonesia) dengan harapan dapat meningkatkan profesionalitas dan akuntabilitas pengelolaan Zakat, Infaq, Shodaqoh dan Wakaf guna menjaga kepercayaan para donatur.</p>
-                <p>LAZ Bunyan didirikan pada tahun 2019, secara hukum lembaga memiliki legalitas resmi yang senantiasa berkhidmat untuk mewadahi dan mengoptimalkan potensi Zakat, Infaq, Shodaqoh dan Wakaf yang kemudian di kelola dan disalurkan dalam berbagai campaign keummatan terutama dalam campaign mencetak ulama pejuang dan hafidz Qur'an  serta solidaritas sosial kemanusiaan.</p>
-              </p>
-            </div>
-            <div class="w-footer-a">
+  <!-- Article Start -->
+  <section class="section-property section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Artikel</h2>
+                <a href="/campaigns/create">create</a>
+              </div>
+              <div class="title-link">
+                <a href="program.html">Selengkapnya
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="nav-footer">
-            
-          </nav>
-          <div class="socials-a">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="https://www.facebook.com/lazbunyan.izi/">
-                  <i class="bi bi-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://api.whatsapp.com/send?phone=%2B6285282979857&fbclid=IwAR2FDaq5BE4ZgBA4Mj3NtWD3XR-3GLNJpDKEYST29cONifWmLppw3TcZgfQ">
-                  <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://www.instagram.com/lazbunyan/">
-                  <i class="bi bi-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://www.youtube.com/channel/UCkwC2s2p3tRAr6AZplGsEfw">
-                  <i class="bi bi-youtube" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
+        
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+            <% for (const campaign of campaigns) { %>
+              <div class="carousel-item-b swiper-slide">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <% for (const image of campaign.images) { %>
+                  <img src="/images/<%= image.filename %>" alt="" class="img-a img-fluid">
+                <% } %>
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="/campaigns/<%=campaign._id %>"><%= campaign.title %></a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><%= campaign.deskripsi %>
+                      </div>
+                    </div>
+                    <a href="/campaigns/<%=campaign._id %>" class="link-a">Donasi
+                      <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Dana Terkumpul</h4>
+                        <span>Rp.3.546.469,-
+                        </span>
+                      </li>
+                    
+                      <li>
+                        <h4 class="card-info-title">Target</h4>
+                        <span>Rp.100.000.000,-</span>
+                      </li>                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+          <% } %>
           </div>
-          <div class="copyright-footer">
-            <p class="copyright color-text-a">
-              &copy; Copyright
-              <span class="color-a">LAZ BUNYAN</span> All Rights Reserved.
-            </p>
-          </div>
-
         </div>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+        
+        <div class="propery-carousel-pagination carousel-pagination"></div>
   
+      </div>
+  </section>
+  <!-- Article End -->
 
-  <!-- Template Main JS File -->
-  <script src="/js/main.js"></script>
-
-</body>
-
-</html>
+ 

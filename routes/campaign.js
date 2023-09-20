@@ -11,16 +11,18 @@ const router = express.Router();
 
 router.route('/')
     .get(wrapAsync(CampaignController.home))
-    .post(isAuth, upload.array('image', 5), validateCampaign, wrapAsync(CampaignController.store))
+    .post( upload.array('image', 5), validateCampaign, wrapAsync(CampaignController.store))
 
-router.get('/campaigns/create', CampaignController.create)
+router.get('/create', CampaignController.create)
+
+router.get('/index', CampaignController.index)
 
 router.route('/:id')
-    .get(isValidObjectId('/places'), wrapAsync(CampaignController.show))
-    .put(isAuth, isAuthorPlace, isValidObjectId('/places'), upload.array('image', 5), validateCampaign, wrapAsync(CampaignController.update))
-    .delete(isAuth, isAuthorPlace, isValidObjectId('/places'), wrapAsync(CampaignController.destroy))
+    .get(isValidObjectId('/campaigns'), wrapAsync(CampaignController.show))
+    .put(upload.array('image', 5), wrapAsync(CampaignController.update))
+    .delete(wrapAsync(CampaignController.destroy))
 
-router.get('/:id/edit', isAuth, isAuthorPlace, isValidObjectId('/places'), wrapAsync(CampaignController.edit))
+router.get('/:id/edit', wrapAsync(CampaignController.edit))
 
 router.delete('/:id/images', wrapAsync(CampaignController.destroyImages))
 

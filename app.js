@@ -79,19 +79,19 @@ app.get('/', wrapAsync(async (req, res) => {
 
 // places routes
 app.use('/', routerUser)
-app.use('/', routerCampaign);
+app.use('/campaigns', routerCampaign);
 app.use('/places/:place_id/reviews', routerReview);
 
 
-app.all('*', (req, res, next) => {
-	next(new ExpressError('Page not found', 404));
-})
+// app.all('*', (req, res, next) => {
+// 	next(new ExpressError('Page not found', 404));
+// })
 
-app.use((err, req, res, next) => {
-	const { statusCode = 500 } = err;
-	if (!err.message) err.message = 'Oh No, Something Went Wrong!'
-	res.status(statusCode).render('error', { err });
-})
+// app.use((err, req, res, next) => {
+// 	const { statusCode = 500 } = err;
+// 	if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+// 	res.status(statusCode).render('error', { err });
+// })
 
 app.listen(port, () => {
 	console.log(`server is running on http://127.0.0.1:3000`);

@@ -11,17 +11,17 @@ const campaignSchema = new Schema({
             url: String,
             filename: String
         }
+    ],
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review'
+        }
     ]
-    // author: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    // },
-    // reviews: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'Review'
-    //     }
-    //]
 })
 
 campaignSchema.post('findOneAndDelete', async function (doc) {

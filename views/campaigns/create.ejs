@@ -1,61 +1,52 @@
 <% layout('layouts/app') %>
-<section class="section mt-5 mb-5">
+
+<section class="section-property section-t8">
     <div class="row">
-    <h1 class="text-center">Add Place</h1>
-    <div class="col-6 offset-3">
-        <form action="/campaign" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="place[title]" id="title" class="form-control" required>
-                <div class="valid-feedback">
-                    Looks good!
+        <h1 class="text-center">Add New Campaign</h1>
+        <div class="col-6 offset-3">
+            <form action="/campaigns" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="campaign[title]" id="title" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please fill out this field.
+                    </div>
                 </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="campaign[description]" id="description" class="form-control" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please fill out this field.
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" name="place[location]" id="location" class="form-control" required>
-                <div class="valid-feedback">
-                    Looks good!
+                <div class="mb-3">
+                    <label for="target" class="form-label">Target</label>
+                    <input type="text" name="campaign[target]" id="target" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please fill out this field.
+                    </div>
                 </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" name="image" id="image" accept="image/*" multiple required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please fill out this field.
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea name="place[description]" id="description" class="form-control" required></textarea>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="text" name="place[price]" id="price" class="form-control" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image Url</label>
-                <input type="file" name="image" id="image" accept="image/*" multiple required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
     </div>
 </section>
