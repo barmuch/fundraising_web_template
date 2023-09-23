@@ -117,6 +117,23 @@ const destroyImages = async (req, res) => {
     }
 }
 
+const getDescriptionData = async (req, res) => {
+    try {
+        const campaignId = req.params.id;
+        const campaign = await Campaign.findById(campaignId);
+
+        if (!campaign) {
+            return res.status(404).json({ message: 'Campaign tidak ditemukan' });
+        }
+
+        const deskripsi = campaign.description;
+        return res.json({ deskripsi }); // Mengirimkan deskripsi sebagai respons
+    } catch (error) {
+        console.error(error); // Cetak error ke konsol
+        return res.status(500).json({ message: 'Terjadi kesalahan dalam mengambil deskripsi kampanye' });
+    }
+}
+
 export {
-    home, index, create, store, show, edit, update, destroy, destroyImages
+    home, index, create, store, show, edit, update, destroy, destroyImages, getDescriptionData
 }

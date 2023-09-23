@@ -23,6 +23,9 @@
 
   <!-- Template Main CSS File -->
   <link href="/css/style.css" rel="stylesheet">
+  <!-- Tiny -->
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 </head>
 <body >
     
@@ -46,5 +49,11 @@
 
  <!-- Template Main JS File -->
  <script src="/js/main.js"></script>
+<!-- tiny -->
+ <script>
+  tinymce.init({
+    selector: '#description'
+  });
+</script>
 </body>
 </html>

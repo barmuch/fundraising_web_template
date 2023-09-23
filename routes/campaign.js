@@ -17,6 +17,8 @@ router.get('/create', CampaignController.create)
 
 router.get('/index', CampaignController.index)
 
+router.get('/:id/deskripsi', CampaignController.getDescriptionData)
+
 router.route('/:id')
     .get(isValidObjectId('/campaigns'), wrapAsync(CampaignController.show))
     .put(upload.array('image', 5), wrapAsync(CampaignController.update))
