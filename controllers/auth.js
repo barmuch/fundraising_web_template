@@ -8,7 +8,7 @@ const register = async (req, res) => {
         req.login(registerUser, err => {
             if (err) return next(err);
             req.flash('success_msg', 'You are now registered and logged in');
-            res.redirect('/places');
+            res.redirect('/');
         })
     } catch (error) {
         req.flash('error_msg', error.message);
@@ -22,14 +22,14 @@ const loginForm = (req, res) => {
 
 const login = (req, res) => {
     req.flash('success_msg', 'You are now logged in');
-    res.redirect('/places');
+    res.redirect('/');
 }
 
 const logout = (req, res) => {
     req.logout(function (err) {
         if (err) { return next(err); }
         req.flash('success_msg', 'You are now logged out');
-        res.redirect('/places');
+        res.redirect('/');
     });
 }
 

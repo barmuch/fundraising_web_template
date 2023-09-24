@@ -4,7 +4,7 @@ import Place from '../models/campaign.js';
 import Review from '../models/review.js';
 import * as ReviewController from '../controllers/reviews.js';
 import isValidObjectId from '../middlewares/isValidObjectId.js';
-import isAuth from '../middlewares/isAuth.js';
+import isAuth from '../middlewares/isAdmin.js';
 import validateReview from '../middlewares/validateReview.js';
 import { isAuthorReview } from '../middlewares/isAuthor.js';
 const router = express.Router({ mergeParams: true });

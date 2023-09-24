@@ -15,7 +15,6 @@ import ExpressError from './utils/ExpressError.js';
 import wrapAsync from "./utils/wrapAsync.js"
 import Campaign from './models/campaign.js'
 import routerUser from './routes/user.js';
-import routerReview from './routes/reviews.js';
 import routerCampaign from './routes/campaign.js';
 import User from './models/user.js';
 
@@ -80,18 +79,18 @@ app.get('/', wrapAsync(async (req, res) => {
 // places routes
 app.use('/', routerUser)
 app.use('/campaigns', routerCampaign);
-app.use('/places/:place_id/reviews', routerReview);
 
 
-// app.all('*', (req, res, next) => {
-// 	next(new ExpressError('Page not found', 404));
-// })
 
-// app.use((err, req, res, next) => {
-// 	const { statusCode = 500 } = err;
-// 	if (!err.message) err.message = 'Oh No, Something Went Wrong!'
-// 	res.status(statusCode).render('error', { err });
-// })
+app.all('*', (req, res, next) => {
+	next(new ExpressError('Page not found', 404));
+})
+
+app.use((err, req, res, next) => {
+	const { statusCode = 500 } = err;
+	if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+	res.status(statusCode).render('error', { err });
+})
 
 app.listen(port, () => {
 	console.log(`server is running on http://127.0.0.1:3000`);

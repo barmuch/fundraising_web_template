@@ -2,7 +2,7 @@ import express from 'express'
 import wrapAsync from '../utils/wrapAsync.js';
 import * as CampaignController from '../controllers/campaigns.js'
 import isValidObjectId from '../middlewares/isValidObjectId.js';
-import isAuth from '../middlewares/isAuth.js';
+import isAdmin from '../middlewares/isAdmin.js';
 import validateCampaign from '../middlewares/validateCampaign.js';
 import { isAuthorPlace } from '../middlewares/isAuthor.js';
 import upload from '../configs/multer.js';
@@ -13,7 +13,7 @@ router.route('/')
     .get(wrapAsync(CampaignController.home))
     .post( upload.array('image', 5), validateCampaign, wrapAsync(CampaignController.store))
 
-router.get('/create', CampaignController.create)
+router.get('/create',isAdmin, CampaignController.create)
 
 router.get('/index', CampaignController.index)
 
@@ -24,7 +24,7 @@ router.route('/:id')
     .put(upload.array('image', 5), wrapAsync(CampaignController.update))
     .delete(wrapAsync(CampaignController.destroy))
 
-router.get('/:id/edit', wrapAsync(CampaignController.edit))
+router.get('/:id/edit', isAdmin, wrapAsync(CampaignController.edit))
 
 router.delete('/:id/images', wrapAsync(CampaignController.destroyImages))
 
