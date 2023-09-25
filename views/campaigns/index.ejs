@@ -37,24 +37,28 @@
                             <a href="/campaigns/<%=campaign._id %>"><%= campaign.title %></a>
                         </h2>
                     </div>
+                      
                         <div class="card-body-a">
+                          <% if (user && user.role === 'admin') { %>
                             <a href="/campaigns/<%= campaign._id %>" class="card-link btn btn-warning text-white">View</a>
-                            <form action="/campaigns/<%= campaign._id %>?_method=DELETE" method="POST" style=" display:inline!important;">
-                              <button type="submit" class="btn btn-danger">Delete</button>
+                            <form action="/campaigns/<%= campaign._id %>?_method=DELETE" method="POST" style="display:inline!important;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
+                        <% } %>
+                        
                             <div class="progress mt-2">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">Rp 3.546.469
-                        </div>
-                    </div>
+                              <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">Rp 3.546.469
+                              </div>                      
+                          </div>
                         <a href="/" class="link-a">Donasi                          
-              <span class="bi bi-chevron-right"></span>
-            </a>
-          </div>
+                        <span class="bi bi-chevron-right"></span>
+                       </a>
+                        </div>
           <div class="card-footer-a">
             <ul class="card-info d-flex justify-content-around">
               <li>
                 <h4 class="card-info-title"><Dana Terkumpul></h4>
-                <span>Rp 3.546.469
+                <span>100000
                 </span>
               </li>
             

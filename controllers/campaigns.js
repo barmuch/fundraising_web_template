@@ -1,5 +1,7 @@
 
 import Campaign from "../models/campaign.js";
+import User from "../models/user.js";
+
 import fs from 'fs';
 
 
@@ -10,7 +12,8 @@ const home = async (req, res) => {
 
 const index = async (req, res) => {
     const campaigns = await Campaign.find();
-    res.render('campaigns/index.ejs', {campaigns});
+    const user = req.user
+    res.render('campaigns/index.ejs', {campaigns, user});
 }
 
 const create = (req, res) => {
@@ -36,12 +39,15 @@ const show = async (req, res) => {
                 path: 'author'
             }
         })
-        .populate('author');
-    res.render('campaigns/show', { campaign });
+        .populate('author');  
+  
+    res.render('campaigns/show', { campaign});
 }
 
+
+
 const edit = async (req, res) => {
-    const campaign = await Campaign.findById(req.params.id);
+    const campaign = await Campaign.findById(req.params._id);
     res.render('campaigns/edit', { campaign });
 }
 
