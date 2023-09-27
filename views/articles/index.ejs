@@ -1,17 +1,15 @@
 <% layout('layouts/app') %>
 
-
-
 <!-- ======= Intro Single ======= -->
   <section class="intro-single">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Campaign</h1>
+            <h1 class="title-single">Articles</h1>
             <span class="color-text-a">"Mari ikut serta dalam gerakan Bersatu Menebar Kebaikan bersama Laz Bunyan"</span>
-            <br><br>
-            <a href="/campaigns/create" class="card-link btn btn-warning text-white">Add new campaign</a>  
+            <br>
+            <a href="/articles/create" class="card-link btn btn-warning text-white">Add New Article</a>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -24,11 +22,11 @@
   <section class="property-grid grid">
     <div class="container mb-5">
       <div class="row">
-            <% for (const campaign of campaigns) { %>
+            <% for (const article of articles) { %>
                 <div class="col-md-4 mt-5">
                 <div class="card-box-a card-shadow">                  
                     <div class="img-box-a">
-                        <% for (const image of campaign.images) { %>
+                        <% for (const image of article.images) { %>
                             <img src="/images/<%= image.filename %>" alt="" class="img-a img-fluid">
                         <% } %>          
                     </div>
@@ -36,13 +34,16 @@
                     <div class="card-overlay-a-content">
                         <div class="card-header-a">
                             <h2 class="card-title-a">
-                            <a href="/campaigns/<%=campaign._id %>"><%= campaign.title %></a>
+                            <a href="/articles/<%=article._id %>"><%= article.title %></a>
                         </h2>
                     </div>
                       
                         <div class="card-body-a">
                           <% if (currentUser && currentUser.role === 'admin') { %>
-                            <a href="/campaigns/<%= campaign._id %>" class="card-link btn btn-warning text-white">View</a>
+                            <a href="/articles/<%= article._id %>" class="card-link btn btn-warning text-white">View</a>
+                            <form action="/articles/<%= article._id %>?_method=DELETE" method="POST" style="display:inline!important;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                           <% } %>
                         
                             <div class="progress mt-2">
@@ -60,11 +61,7 @@
                 <span>100000
                 </span>
               </li>
-            
-              <li>
-                <h4 class="card-info-title">Target</h4>
-                <span><%= campaign.target  %></span>
-              </li>                     
+                                
             </ul>
           </div>
         </div>

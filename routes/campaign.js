@@ -10,21 +10,18 @@ const router = express.Router();
 
 
 router.route('/')
-    .get(wrapAsync(CampaignController.home))
     .post( upload.array('image', 5), validateCampaign, wrapAsync(CampaignController.store))
 
 router.get('/create',isAdmin, CampaignController.create)
 
 router.get('/index', CampaignController.index)
 
-router.get('/:id/deskripsi', CampaignController.getDescriptionData)
-
 router.route('/:id')
     .get(isValidObjectId('/campaigns'), wrapAsync(CampaignController.show))
     .put(upload.array('image', 5), wrapAsync(CampaignController.update))
     .delete(wrapAsync(CampaignController.destroy))
 
-router.get('/:id/edit', isAdmin, wrapAsync(CampaignController.edit))
+router.get('/:id/edit',isAdmin, wrapAsync(CampaignController.edit))
 
 router.delete('/:id/images', wrapAsync(CampaignController.destroyImages))
 

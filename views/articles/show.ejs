@@ -7,11 +7,11 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single"><%= campaign.title %></h1>             
+              <h1 class="title-single"><%= article.title %></h1>             
               <span class="color-text-a">Infaq</span><br><br>
-              <% if (currentUser && currentUser.role === 'admin') { %>
-              <a href="/campaigns/<%= campaign._id %>/edit" class="card-link btn btn-warning text-white">Edit</a>
-              <form action="/campaigns/<%= campaign._id %>?_method=DELETE" method="POST" style=" display:inline!important;">
+              <% if(currentUser && currentUser.role === 'admin') { %>
+              <a href="/articles/<%= article._id %>/edit" class="card-link btn btn-warning text-white">Edit</a>
+              <form action="/articles/<%= article._id %>?_method=DELETE" method="POST" style=" display:inline!important;">
                 <button type="submit" class="btn btn-danger">Delete</button>
               </form>
               <% } %>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="property-description">
                   <p class="description color-text-a">
-                   <%- campaign.description %>
+                   <%- article.description %>
                   </p>
                 </div>
               </div>
@@ -61,7 +61,7 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="poster" role="tabpanel" aria-labelledby="pills-video-tab">
-                <% for (const image of campaign.images) { %>
+                <% for (const image of article.images) { %>
                     <img src="/images/<%= image.filename %>" alt="" class="img-fluid">
                 <% } %> 
             </div>

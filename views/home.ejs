@@ -75,7 +75,7 @@
     <div class="swiper-pagination"></div>
   </div><!-- End Intro Section -->
 
-  <!-- Campaigns Start -->
+  <!-- Cmapaigns Start -->
   <section class="section-property section-t8">
     <div class="container">
       <div class="row">
@@ -156,7 +156,7 @@
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
                 <h2 class="title-a">Artikel</h2>
-                <a href="/campaigns/create">create</a>
+                <a href="/articles/index">Kelola Article</a>
               </div>
               <div class="title-link">
                 <a href="program.html">Selengkapnya
@@ -169,11 +169,11 @@
         
         <div id="property-carousel" class="swiper">
           <div class="swiper-wrapper">
-            <% for (const campaign of campaigns) { %>
+            <% for (const article of articles) { %>
               <div class="carousel-item-b swiper-slide">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-                <% for (const image of campaign.images) { %>
+                <% for (const image of article.images) { %>
                   <img src="/images/<%= image.filename %>" alt="" class="img-a img-fluid">
                 <% } %>
               </div>
@@ -181,15 +181,15 @@
                 <div class="card-overlay-a-content">
                   <div class="card-header-a">
                     <h2 class="card-title-a">
-                      <a href="/campaigns/<%=campaign._id %>"><%= campaign.title %></a>
+                      <a href="/articles/<%=article._id %>"><%= article.title %></a>
                     </h2>
                   </div>
                   <div class="card-body-a">
                     <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><%= campaign.deskripsi %>
+                      <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><%= article.deskripsi %>
                       </div>
                     </div>
-                    <a href="/campaigns/<%=campaign._id %>" class="link-a">Donasi
+                    <a href="/articles/<%=article._id %>" class="link-a">Donasi
                       <span class="bi bi-chevron-right"></span>
                     </a>
                   </div>
