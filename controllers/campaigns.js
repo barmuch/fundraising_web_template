@@ -1,73 +1,68 @@
+import Campaign from '../models/campaign.js'
+import User from '../models/user.js'
 
-import Campaign from "../models/campaign.js";
-import User from "../models/user.js";
-
-import fs from 'fs';
+import fs from 'fs'
 
 const index = async (req, res) => {
-    const campaigns = await Campaign.find();
+    const campaigns = await Campaign.find()
     const user = req.user
-    res.render('campaigns/index.ejs', {campaigns, user});
+    res.render('campaigns/index.ejs', { campaigns, user })
 }
 
 const create = (req, res) => {
-    res.render('campaigns/create.ejs');
+    res.render('campaigns/create.ejs')
 }
 
 const store = async (req, res, next) => {
-    const images = req.files.map(file => ({ url: file.path, filename: file.filename }));
-    const campaign = new Campaign(req.body.campaign);   
-    campaign.images = images;
-    await campaign.save();
+    const images = req.files.map((file) => ({ url: file.path, filename: file.filename }))
+    const campaign = new Campaign(req.body.campaign)
+    campaign.images = images
+    await campaign.save()
 
-    req.flash('success_msg', 'New Campaign Added!');
-    res.redirect('/');
+    req.flash('success_msg', 'New Campaign Added!')
+    res.redirect('/')
 }
-
-
 
 const show = async (req, res) => {
     const campaign = await Campaign.findById(req.params.id)
         .populate({
             path: 'reviews',
             populate: {
-                path: 'author'
-            }
+                path: 'author',
+            },
         })
-        .populate('author');  
-    
-    res.render('campaigns/show', { campaign});
+        .populate('author')
+
+    res.render('campaigns/show', { campaign })
 }
 
-
-
 const edit = async (req, res) => {
-    const campaign = await Campaign.findById(req.params.id);
+    const campaign = await Campaign.findById(req.params.id)
     const user = req.user
-    res.render('campaigns/edit', { campaign, user });
+    res.render('campaigns/edit', { campaign, user })
 }
 
 const update = async (req, res) => {
-    const { id } = req.params;
-    const campaign = await Campaign.findByIdAndUpdate(id, { ...req.body.campaign });
+    const { id } = req.params
+    const campaign = await Campaign.findByIdAndUpdate(id, { ...req.body.campaign })
 
     if (req.files && req.files.length > 0) {
-        campaign.images.forEach(image => {
-            fs.unlinkSync(image.url);
-        });
+        campaign.images.forEach((image) => {
+            fs.unlinkSync(image.url)
+        })
 
-        const images = req.files.map(file => ({ url: file.path, filename: file.filename }));
+        const images = req.files.map((file) => ({ url: file.path, filename: file.filename }))
         campaign.images = images
-        await campaign.save();
+        await campaign.save()
     }
 
-    req.flash('success_msg', 'campaign Updated!');
-    res.redirect(`/campaigns/${campaign._id}`);
+    req.flash('success_msg', 'campaign Updated!')
+    res.redirect(`/campaigns/${campaign._id}`)
 }
 
 const destroy = async (req, res) => {
     const { id } = req.params
-    const campaign = await Campaign.findById(id);
+    const campaign = await Campaign.findById(id)
 
     // if (campaign.images.length > 0) {
     //     place.images.forEach(image => {
@@ -75,10 +70,10 @@ const destroy = async (req, res) => {
     //     });
     // }
 
-    await Campaign.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'campaign Deleted!');
-    const campaigns = await Campaign.find();
-    res.render('campaigns/index.ejs', {campaigns});
+    await Campaign.findByIdAndDelete(req.params.id)
+    req.flash('success_msg', 'campaign Deleted!')
+    const campaigns = await Campaign.find()
+    res.render('campaigns/index.ejs', { campaigns })
 }
 
 const destroyImages = async (req, res) => {
@@ -87,38 +82,32 @@ const destroyImages = async (req, res) => {
         const { images } = req.body
 
         // Cek apakah model Place ditemukan berdasarkan ID-nya
-        const campaign = await Campaign.findById(id);
+        const campaign = await Campaign.findById(id)
         if (!place) {
-            req.flash('error_msg', 'Place not found');
-            return res.redirect(`/places/${id}/edit`);
+            req.flash('error_msg', 'Place not found')
+            return res.redirect(`/places/${id}/edit`)
         }
 
         if (!images || images.length === 0) {
-            req.flash('error_msg', 'Please select at least one image');
-            return res.redirect(`/campaign/${id}/edit`);
+            req.flash('error_msg', 'Please select at least one image')
+            return res.redirect(`/campaign/${id}/edit`)
         }
 
         // Hapus file gambar dari sistem file
-        images.forEach(image => {
-            fs.unlinkSync(image);
-        });
+        images.forEach((image) => {
+            fs.unlinkSync(image)
+        })
 
         // Hapus data gambar dari model Place
-        await Campaign.findByIdAndUpdate(
-            id,
-            { $pull: { images: { url: { $in: images } } } },
-            { new: true }
-        );
+        await Campaign.findByIdAndUpdate(id, { $pull: { images: { url: { $in: images } } } }, { new: true })
 
-        req.flash('success_msg', 'Successfully deleted images');
-        return res.redirect(`/campaigns/${id}/edit`);
+        req.flash('success_msg', 'Successfully deleted images')
+        return res.redirect(`/campaigns/${id}/edit`)
     } catch (err) {
-        console.error(err);
-        req.flash('error_msg', 'Failed to delete images');
-        return res.redirect(`/campaigns/${id}/edit`);
+        console.error(err)
+        req.flash('error_msg', 'Failed to delete images')
+        return res.redirect(`/campaigns/${id}/edit`)
     }
 }
 
-export {
-    index, create, store, show, edit, update, destroy, destroyImages
-}
+export { index, create, store, show, edit, update, destroy, destroyImages }

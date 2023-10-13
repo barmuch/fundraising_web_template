@@ -6,5 +6,5 @@ export const campaignSchema = Joi.object({
         description: Joi.string().required(),
         target: Joi.number().min(0).required(),
         // image: Joi.string().required()
-    }).required()
+    }).required(),
 })

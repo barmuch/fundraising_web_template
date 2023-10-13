@@ -7,8 +7,8 @@
     "scripts": {
         "start": "node app.js",
         "dev": "nodemon app.js",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
+        "format": "prettier --write '**/*.{js,html,css,ejs}'",
+        "format:check": "prettier --check '**/*.{js,html,css,ejs}'",
         "prepare": "husky install",
         "lint-staged": "lint-staged"
     },
@@ -32,6 +32,8 @@
         "passport-local-mongoose": "^8.0.0"
     },
     "devDependencies": {
+        "@commitlint/cli": "^17.7.2",
+        "@commitlint/config-conventional": "^17.7.0",
         "husky": "^8.0.3",
         "lint-staged": "^14.0.1",
         "nodemon": "^3.0.1",
