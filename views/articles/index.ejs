@@ -10,12 +10,11 @@
                     <span class="color-text-a"
                         >"Mari ikut serta dalam gerakan Bersatu Menebar Kebaikan bersama Laz Bunyan"</span
                     >
-                    <br />
+                    <br /><br />
+                    <% if(currentUser && currentUser.role === 'admin') { %>
                     <a href="/articles/create" class="card-link btn btn-warning text-white">Add New Article</a>
+                    <% } %>
                 </div>
-            </div>
-            <div class="col-md-12 col-lg-4">
-                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end"></nav>
             </div>
         </div>
     </div>

@@ -24,6 +24,7 @@
         <link href="/css/style.css" rel="stylesheet" />
         <!-- Tiny -->
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
         <%- include('partials/navbar') %> <%- include('partials/alert') %> <%- body %> <%- include('partials/footer') %>
@@ -43,6 +44,27 @@
         <script>
             tinymce.init({
                 selector: '#description',
+            })
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Saat halaman dimuat, periksa apakah telah discroll
+                if ($(window).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled')
+                }
+
+                // Ketika halaman discroll
+                $(window).scroll(function () {
+                    // Jika scroll mencapai 50px dari atas, tambahkan kelas 'scrolled' ke navbar
+                    if ($(this).scrollTop() > 50) {
+                        $('.navbar').addClass('scrolled')
+                    } else {
+                        // Jika tidak, hapus kelas 'scrolled'
+                        $('.navbar').removeClass('scrolled')
+                    }
+                })
             })
         </script>
     </body>

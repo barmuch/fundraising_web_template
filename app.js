@@ -17,6 +17,7 @@ import Campaign from './models/campaign.js'
 import Article from './models/Article.js'
 import routerUser from './routes/user.js'
 import routerCampaign from './routes/campaign.js'
+import routerPayment from './routes/payment.js'
 import routerArticle from './routes/article.js'
 import User from './models/user.js'
 
@@ -66,6 +67,7 @@ app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
+    res.locals.currentPage = req.path
     next()
 })
 
@@ -83,10 +85,15 @@ app.get(
     })
 )
 
+app.get('/contact', (req, res) => {
+    res.render('contact')
+})
+
 // places routes
 app.use('/', routerUser)
 app.use('/campaigns', routerCampaign)
 app.use('/articles', routerArticle)
+app.use('/payment', routerPayment)
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page not found', 404))

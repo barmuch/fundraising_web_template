@@ -11,11 +11,10 @@
                         >"Mari ikut serta dalam gerakan Bersatu Menebar Kebaikan bersama Laz Bunyan"</span
                     >
                     <br /><br />
+                    <% if(currentUser && currentUser.role === 'admin') { %>
                     <a href="/campaigns/create" class="card-link btn btn-warning text-white">Add new campaign</a>
+                    <% } %>
                 </div>
-            </div>
-            <div class="col-md-12 col-lg-4">
-                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end"></nav>
             </div>
         </div>
     </div>
