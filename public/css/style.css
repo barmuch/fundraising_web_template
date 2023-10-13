@@ -19,7 +19,7 @@ a {
 }
 
 a:hover {
-  color: #e89609;
+  color: #31625A;
   text-decoration: none;
 }
 
@@ -113,7 +113,7 @@ a:hover {
 }
 
 .color-b {
-  color: #e89609;
+  color: #31625A;
 }
 
 .color-d {
@@ -151,10 +151,17 @@ a:hover {
   bottom: -1px;
   width: 100%;
   height: 2px;
-  background-color: #9d690f;
+  background-color: #429a8b;
   z-index: 2;
 }
 
+.bg-login {
+  background-color:#31625A ;
+  color : white!important;
+  border-radius: 20%;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
 /*------/ Bg Image /------*/
 .bg-image {
   background-repeat: no-repeat;
@@ -205,13 +212,13 @@ a:hover {
   margin: 0 0.2rem;
   border-color: transparent;
   padding: 0.5rem 0.8rem;
-  color: #e89609;
+  color: #31625A;
 }
 
 .pagination-a .pagination .page-link:hover,
 .pagination-a .pagination .page-link:active,
 .pagination-a .pagination .page-link:focus {
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 .pagination-a .pagination .page-link span {
@@ -238,13 +245,13 @@ a:hover {
 }
 
 .pagination-a .pagination .page-item.active .page-link {
-  background-color: #e89609;
+  background-color: #31625A;
   color: #fff;
 }
 
 .a {
   text-decoration: none;
-  color: #e89609;
+  color: #31625A;
   font-size: 1.3rem;
 }
 
@@ -269,12 +276,12 @@ a:hover {
 
 .section-t8 h2,
 .section-t8 .title-link a {
-  color: #e89609;
+  color: #31625A;
 }
 
 .section-t8 .progress-bar {
   padding: 5px;
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 @media (max-width: 767px) {
@@ -361,7 +368,7 @@ a:hover {
   position: absolute;
   width: 70px;
   height: 4px;
-  background-color: #e89609;
+  background-color: #31625A;
   bottom: 20px;
   left: 0;
 }
@@ -418,7 +425,7 @@ a:hover {
 }
 
 .carousel-pagination .swiper-pagination-bullet-active {
-  background-color: #e89609;
+  background-color: #31625A;
   width: 36px;
 }
 
@@ -448,7 +455,7 @@ a:hover {
   display: inline-block;
   transition: all 0.6s ease-in-out;
   color: #ffffff;
-  background-color: #e89609;
+  background-color: #31625A;
   opacity: 0.9;
 }
 
@@ -460,7 +467,7 @@ a:hover {
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-prev:hover,
 .nav-arrow-b .owl-arrow .owl-nav .owl-next:hover {
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-next {
@@ -486,7 +493,7 @@ a:hover {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #e89609;
+  background: #31625A;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -500,7 +507,7 @@ a:hover {
 }
 
 .back-to-top:hover {
-  background: #e89609;
+  background: #31625A;
   color: #fff;
 }
 
@@ -527,7 +534,7 @@ a:hover {
   top: calc(50% - 30px);
   left: calc(50% - 30px);
   border: 6px solid #f2f2f2;
-  border-top: 6px solid #e89609;
+  border-top: 6px solid #31625A;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -563,6 +570,11 @@ a:hover {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   box-shadow: 1px 2px 15px rgba(100, 100, 100, 0.3);
+  background-color: transparent;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.navbar.scrolled {
   background-color: #fafafa;
 }
 
@@ -594,7 +606,9 @@ a:hover {
 .navbar-default.navbar-trans .nav-link,
 .navbar-default.navbar-reduce .nav-link {
   font-size: 1.1rem;
-  color: #e89609;
+  color: #31625A;
+  text-shadow : 0px 0px 1px white;
+
   font-weight: 600;
   letter-spacing: 0.03em;
   transition: all 0.1s ease-in-out;
@@ -612,7 +626,7 @@ a:hover {
   width: 100%;
   height: 2px;
   z-index: 0;
-  background-color: #e89609;
+  background-color: #31625A;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out 0.3s;
@@ -620,7 +634,7 @@ a:hover {
 
 .navbar-default.navbar-trans .nav-link:hover,
 .navbar-default.navbar-reduce .nav-link:hover {
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default.navbar-trans .nav-link:hover:before,
@@ -641,18 +655,18 @@ a:hover {
 }
 
 .navbar-default.navbar-trans .nav-link:before {
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 .navbar-default.navbar-trans .nav-link:hover {
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default.navbar-trans .show > .nav-link,
 .navbar-default.navbar-trans .active > .nav-link,
 .navbar-default.navbar-trans .nav-link.show,
 .navbar-default.navbar-trans .nav-link.active {
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default.navbar-reduce {
@@ -662,31 +676,31 @@ a:hover {
 }
 
 .navbar-default.navbar-reduce .nav-link {
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default.navbar-reduce .nav-link:before {
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 .navbar-default.navbar-reduce .nav-link:hover {
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default.navbar-reduce .show > .nav-link,
 .navbar-default.navbar-reduce .active > .nav-link,
 .navbar-default.navbar-reduce .nav-link.show,
 .navbar-default.navbar-reduce .nav-link.active {
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default.navbar-reduce .navbar-brand {
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default .dropdown .dropdown-menu {
   border-top: 0;
-  border-left: 4px solid #e89609;
+  border-left: 4px solid #31625A;
   border-right: 0;
   border-bottom: 0;
   transform: translate3d(0px, 40px, 0px);
@@ -700,12 +714,12 @@ a:hover {
 }
 
 .navbar li {
-  color: #e89609;
+  color: #31625A;
 }
 
 @media (min-width: 768px) {
   .navbar-default .dropdown .dropdown-menu {
-    border-top: 4px solid #e89609;
+    border-top: 4px solid #31625A;
     border-left: 0;
     display: block;
     position: absolute;
@@ -722,13 +736,13 @@ a:hover {
 
 .navbar-default .dropdown .dropdown-menu .dropdown-item:hover {
   background-color: #ffffff;
-  color: #e89609;
+  color: #31625A;
   transition: all 500ms ease;
 }
 
 .navbar-default .dropdown .dropdown-menu .dropdown-item.active {
   background-color: #ffffff;
-  color: #e89609;
+  color: #31625A;
 }
 
 .navbar-default .dropdown:hover .dropdown-menu {
@@ -928,11 +942,14 @@ a:hover {
 }
 
 .intro h1 .span2 {
-  color: #e89609;
+  color: #31625A;
+  text-shadow : 0px 0px 4px white;
+
+
 }
 
 .intro .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #e89609;
+  background-color: #31625A;
   width: 36px;
 }
 
@@ -966,14 +983,14 @@ a:hover {
 .intro .intro-body .price-a {
   color: #ffffff;
   /* padding: 1rem 1.5rem; */
-  border: 2px solid #e89609;
+  border: 2px solid #31625A;
   border-radius: 50px;
   letter-spacing: 0.03em;
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 .intro .intro-body .price-a:hover {
-  background-color: #f0a728;
+  background-color: #51a799;
 }
 
 .intro .spacial {
@@ -1069,11 +1086,11 @@ a:hover {
 
 .intro-single h1,
 .intro-single span {
-  color: #e89609;
+  color: #31625A;
 }
 
 .intro-single .breadcumb a {
-  color: #e89609;
+  color: #31625A;
 }
 
 .intro-single span {
@@ -1091,7 +1108,7 @@ a:hover {
 }
 
 .intro-single .title-single-box {
-  border-left: 3px solid #e89609;
+  border-left: 3px solid #31625A;
 }
 
 .intro-single .title-single-box .title-single {
@@ -1118,7 +1135,7 @@ a:hover {
 .intro-single .breadcrumb {
   padding-right: 0;
   padding-left: 0;
-  color: #e89609;
+  color: #31625A;
 }
 
 /*--------------------------------------------------------------
@@ -1310,7 +1327,7 @@ a:hover {
 .price-a {
   color: #ffffff;
   padding: 0.6rem 0.8rem;
-  border: 2px solid E89609;
+  border: 2px solid 31625A;
   border-radius: 50px;
   letter-spacing: 0.03em;
 }
@@ -1319,7 +1336,7 @@ a:hover {
   width: 100%;
   position: absolute;
   z-index: 2;
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 .card-info {
@@ -1385,7 +1402,7 @@ a:hover {
 }
 
 .property-grid .progress .progress-bar {
-  background-color: #e89609;
+  background-color: #31625A;
 }
 
 /*------/ Property Single /-----*/
@@ -1465,7 +1482,7 @@ a:hover {
 
 .card-header-b .category-b {
   font-size: 0.9rem;
-  background-color: E89609;
+  background-color: 31625A;
   padding: 0.3rem 0.7rem;
   color: #313131;
   letter-spacing: 0.03em;
@@ -1771,7 +1788,7 @@ a:hover {
 }
 
 .card-box-d:hover .card-overlay-hover {
-  background-color: #e89609;
+  background-color: #31625A;
   opacity: 0.9;
 }
 

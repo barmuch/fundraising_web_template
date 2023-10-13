@@ -5,18 +5,17 @@
       <span></span>
       <span></span>
     </button>
-    <a class="navbar-brand text-brand" href="index.html"><img src="assets/img/Logo web 4.png"></a>
+    <a class="navbar-brand text-brand" href="/"><img src="/images/web 1.png"></a>
 
-    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+    <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
       <ul class="navbar-nav">
 
-        <li class="nav-item">
-          <a class="nav-link active" href="/">Beranda</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link " href="/campaigns/index">Campaign</a>
-        </li>
+        <li class="nav-item <%= currentPage === '/' ? 'active' : '' %>">
+          <a class="nav-link" href="/">Beranda</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link <%= currentPage === '/campaigns/index' ? 'active' : '' %>" href="/campaigns/index">Campaign</a>
+      </li>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Donasi
@@ -27,26 +26,27 @@
           </ul>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link " href="berita.html">Berita</a>
+          <a class="nav-link <%= currentPage === '/articles/index' ? 'active' : '' %>" href="/articles/index">Berita</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link " href="blog-grid.html">Reseller Kebaikan</a>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link " href="contact.html">Kontak</a>
+          <a class="nav-link <%= currentPage === '/contact' ? 'active' : '' %>" href="/contact">Kontak</a>
         </li>
       </ul>
-      <ul class="navbar-nav">
+      
+      <ul class="navbar-nav ">
         <% if (!currentUser) { %>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link bg-login" href="/login">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
+                <a class="nav-link bg-login" href="/register">Register</a>
             </li>
         <% } else { %>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <li class="nav-item ">
+                <a class="nav-link bg-login" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <form action="/logout" method="POST" style="display: none" id="logout-form"></form>
             </li>
         <% } %>
@@ -55,3 +55,6 @@
 
   </div>
 </nav>
+
+
+  

@@ -1,15 +1,28 @@
-<% if (success_msg && success_msg.length) { %>
-    <div class="alert alert-success position-absolute m-0" role="alert">
+
+    <% if (success_msg && success_msg.length) { %>
+    <div class="alert alert-success fixed-top mt-20" role="alert">
         <%= success_msg %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <% } %>
     
     <% if (error_msg && error_msg.length) { %>
-    <div class="alert alert-danger position-absolute m-0" role="alert">
+    <div class="alert alert-danger fixed-top m-0" role="alert">
         <%= error_msg %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-<% } %>
-    
-    
+    <% } %>
+
+    <script>
+        $(document).ready(function() {
+            // Menghilangkan elemen alert dengan class "alert-success" setelah 5 detik
+            setTimeout(function() {
+                $(".alert-success").alert('close');
+            }, 5000);
+        
+            // Menghilangkan elemen alert dengan class "alert-danger" setelah 5 detik
+            setTimeout(function() {
+                $(".alert-danger").alert('close');
+            }, 3000);
+        });
+    </script>
