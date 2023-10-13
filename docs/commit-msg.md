@@ -29,3 +29,5 @@ Example commit messages:
 -   `docs(readme): update README with usage instructions`
 
 Following these guidelines helps us maintain a clear and organized commit history. Thank you for your contributions!
+
+or visit https://github.com/conventional-changelog/commitlint/#what-is-commitlint for more information.

@@ -1,1 +1,4 @@
-{ "extends": ["@commitlint/config-conventional"] }
+{
+    "extends": ["@commitlint/config-conventional"],
+    "helpUrl": "Invalid commit message format. Please check the commit message format guidelines in the [docs/commit-msg.md] file."
+}
