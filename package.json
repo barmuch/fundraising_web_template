@@ -9,7 +9,8 @@
         "dev": "nodemon app.js",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "lint-staged": "lint-staged"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
