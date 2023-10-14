@@ -28,7 +28,7 @@
                 <div class="card-box-a card-shadow">
                     <div class="img-box-a">
                         <% for (const image of campaign.images) { %>
-                        <img src="/images/<%= image.filename %>" alt="" class="img-a img-fluid" />
+                        <img src="<%= image.url %>" alt="" class="img-a img-fluid" />
                         <% } %>
                     </div>
                     <div class="card-overlay">

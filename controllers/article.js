@@ -1,5 +1,9 @@
 import Article from '../models/Article.js'
 import fs from 'fs'
+import * as cloudinaryService from '../services/cloudinary.js'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const index = async (req, res) => {
     const articles = await Article.find()
@@ -12,7 +16,8 @@ const create = (req, res) => {
 }
 
 const store = async (req, res, next) => {
-    const images = req.files.map((file) => ({ url: file.path, filename: file.filename }))
+    // upload image to cloudinary
+    const images = await cloudinaryService.upload(req.files, process.env.CLOUDINARY_UPLOAD_PRESET_ARTICLE)
     const article = new Article(req.body.article)
     article.images = images
     await article.save()
@@ -44,11 +49,12 @@ const update = async (req, res) => {
     const article = await Article.findByIdAndUpdate(id, { ...req.body.article })
 
     if (req.files && req.files.length > 0) {
-        article.images.forEach((image) => {
-            fs.unlinkSync(image.url)
-        })
+        // delete previous images
+        const publicIds = article.images.map((image) => image.public_id)
+        await cloudinaryService.destroy(publicIds)
 
-        const images = req.files.map((file) => ({ url: file.path, filename: file.filename }))
+        // upload new images
+        const images = await cloudinaryService.upload(req.files, process.env.CLOUDINARY_UPLOAD_PRESET_ARTICLE)
         article.images = images
         await article.save()
     }
@@ -61,11 +67,14 @@ const destroy = async (req, res) => {
     const { id } = req.params
     const article = await Article.findById(id)
 
-    // if (article.images.length > 0) {
-    //     place.images.forEach(image => {
-    //         fs.unlinkSync(image.url);
-    //     });
-    // }
+    if (!article) {
+        req.flash('error_msg', 'Article not found')
+        return res.redirect('/')
+    }
+
+    // delete image in cloudinary
+    const publicIds = article.images.map((image) => image.public_id)
+    await cloudinaryService.destroy(publicIds)
 
     await Article.findByIdAndDelete(req.params.id)
     req.flash('success_msg', 'article Deleted!')
@@ -80,7 +89,7 @@ const destroyImages = async (req, res) => {
 
         // Cek apakah model Place ditemukan berdasarkan ID-nya
         const article = await Article.findById(id)
-        if (!place) {
+        if (!article) {
             req.flash('error_msg', 'Place not found')
             return res.redirect(`/places/${id}/edit`)
         }
@@ -90,14 +99,16 @@ const destroyImages = async (req, res) => {
             return res.redirect(`/article/${id}/edit`)
         }
 
-        // Hapus file gambar dari sistem file
-        images.forEach((image) => {
-            fs.unlinkSync(image)
+        // delete image im cloudinary by public id
+        await cloudinaryService.destroy(images)
+
+        // update images in article
+        const newImages = article.images.filter((image) => {
+            return !images.includes(image.public_id)
         })
 
-        // Hapus data gambar dari model Place
-        await Article.findByIdAndUpdate(id, { $pull: { images: { url: { $in: images } } } }, { new: true })
-
+        article.images = newImages
+        await article.save()
         req.flash('success_msg', 'Successfully deleted images')
         return res.redirect(`/articles/${id}/edit`)
     } catch (err) {

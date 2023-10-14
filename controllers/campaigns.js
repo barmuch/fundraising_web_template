@@ -1,7 +1,9 @@
 import Campaign from '../models/campaign.js'
 import User from '../models/user.js'
+import * as cloudinaryService from '../services/cloudinary.js'
+import dotenv from 'dotenv'
 
-import fs from 'fs'
+dotenv.config()
 
 const index = async (req, res) => {
     const campaigns = await Campaign.find()
@@ -14,7 +16,8 @@ const create = (req, res) => {
 }
 
 const store = async (req, res, next) => {
-    const images = req.files.map((file) => ({ url: file.path, filename: file.filename }))
+    // upload image to cloudinary
+    const images = await cloudinaryService.upload(req.files, process.env.CLOUDINARY_UPLOAD_PRESET_CAMPAIGN)
     const campaign = new Campaign(req.body.campaign)
     campaign.images = images
     await campaign.save()
@@ -47,11 +50,12 @@ const update = async (req, res) => {
     const campaign = await Campaign.findByIdAndUpdate(id, { ...req.body.campaign })
 
     if (req.files && req.files.length > 0) {
-        campaign.images.forEach((image) => {
-            fs.unlinkSync(image.url)
-        })
+        // delete previous images
+        const publicIds = campaign.images.map((image) => image.public_id)
+        await cloudinaryService.destroy(publicIds)
 
-        const images = req.files.map((file) => ({ url: file.path, filename: file.filename }))
+        // upload new images
+        const images = await cloudinaryService.upload(req.files, process.env.CLOUDINARY_UPLOAD_PRESET_CAMPAIGN)
         campaign.images = images
         await campaign.save()
     }
@@ -64,11 +68,14 @@ const destroy = async (req, res) => {
     const { id } = req.params
     const campaign = await Campaign.findById(id)
 
-    // if (campaign.images.length > 0) {
-    //     place.images.forEach(image => {
-    //         fs.unlinkSync(image.url);
-    //     });
-    // }
+    if (!campaign) {
+        req.flash('error_msg', 'Campaign not found')
+        return res.redirect('/')
+    }
+
+    // delete image in cloudinary
+    const publicIds = campaign.images.map((image) => image.public_id)
+    await cloudinaryService.destroy(publicIds)
 
     await Campaign.findByIdAndDelete(req.params.id)
     req.flash('success_msg', 'campaign Deleted!')
@@ -83,23 +90,26 @@ const destroyImages = async (req, res) => {
 
         // Cek apakah model Place ditemukan berdasarkan ID-nya
         const campaign = await Campaign.findById(id)
-        if (!place) {
-            req.flash('error_msg', 'Place not found')
+        if (!campaign) {
+            req.flash('error_msg', 'Places not found')
             return res.redirect(`/places/${id}/edit`)
         }
 
-        if (!images || images.length === 0) {
+        if (!images) {
             req.flash('error_msg', 'Please select at least one image')
             return res.redirect(`/campaign/${id}/edit`)
         }
 
-        // Hapus file gambar dari sistem file
-        images.forEach((image) => {
-            fs.unlinkSync(image)
+        // delete image im cloudinary by public id
+        await cloudinaryService.destroy(images)
+
+        // update images in campaign
+        const newImages = campaign.images.filter((image) => {
+            return !images.includes(image.public_id)
         })
 
-        // Hapus data gambar dari model Place
-        await Campaign.findByIdAndUpdate(id, { $pull: { images: { url: { $in: images } } } }, { new: true })
+        campaign.images = newImages
+        await campaign.save()
 
         req.flash('success_msg', 'Successfully deleted images')
         return res.redirect(`/campaigns/${id}/edit`)

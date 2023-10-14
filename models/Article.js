@@ -9,6 +9,7 @@ const articleSchema = new Schema({
         {
             url: String,
             filename: String,
+            public_id: String,
         },
     ],
     author: {
