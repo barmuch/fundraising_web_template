@@ -7,8 +7,8 @@
     "scripts": {
         "start": "node app.js",
         "dev": "nodemon app.js",
-        "format": "prettier --write '**/*.{js,html,css,ejs}'",
-        "format:check": "prettier --check '**/*.{js,html,css,ejs}'",
+        "format": "prettier --write '**/*.{js,html,css,ejs,json}'",
+        "format:check": "prettier --check '**/*.{js,html,css,ejs,json}'",
         "prepare": "husky install",
         "lint-staged": "lint-staged"
     },

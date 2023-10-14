@@ -106,5 +106,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(port, () => {
-    console.log(`server is running on http://127.0.0.1:3000`)
+    console.log(`server is running on http://localhost:3000`)
 })
