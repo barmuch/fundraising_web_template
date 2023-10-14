@@ -1,5 +1,5 @@
-export default func => {
+export default (func) => {
     return (req, res, next) => {
-        func(req, res, next).catch(next);
+        func(req, res, next).catch(next)
     }
 }

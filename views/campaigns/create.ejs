@@ -7,43 +7,27 @@
             <form action="/campaigns" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" name="campaign[title]" id="title" class="form-control" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please fill out this field.
-                    </div>
+                    <input type="text" name="campaign[title]" id="title" class="form-control" required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea name="campaign[description]" id="description" class="form-control" required></textarea>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please fill out this field.
-                    </div>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="mb-3">
                     <label for="target" class="form-label">Target</label>
-                    <input type="text" name="campaign[target]" id="target" class="form-control" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please fill out this field.
-                    </div>
+                    <input type="number" name="campaign[target]" id="target" class="form-control" required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="file" name="image" id="image" accept="image/*" multiple required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please fill out this field.
-                    </div>
+                    <input type="file" name="image" id="image" accept="image/*" multiple required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

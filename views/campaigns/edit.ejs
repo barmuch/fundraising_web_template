@@ -1,67 +1,70 @@
 <% layout('layouts/app') %>
-<section class="section-property section-t8 ">
+<section class="section-property section-t8">
     <div class="row mb-5 mt-10 px-4">
-    <h1 class="text-center">Edit Campaign</h1>
-    <div class="col-6  ">
-        <form action="/campaigns/<%= campaign._id %>?_method=PUT" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="campaign[title]" id="title" class="form-control" value="<%= campaign.title %>" required>
-                <div class="valid-feedback">
-                    Looks good!
+        <h1 class="text-center">Edit Campaign</h1>
+        <div class="col-6">
+            <form
+                action="/campaigns/<%= campaign._id %>?_method=PUT"
+                method="POST"
+                class="validated-form"
+                novalidate
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input
+                        type="text"
+                        name="campaign[title]"
+                        id="title"
+                        class="form-control"
+                        value="<%= campaign.title %>"
+                        required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="campaign[description]" id="description" class="form-control" required>
+<%= campaign.description %></textarea
+                    >
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea name="campaign[description]" id="description" class="form-control" required><%= campaign.description %></textarea>
-                <div class="valid-feedback">
-                    Looks good!
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input
+                        type="text"
+                        name="campaign[price]"
+                        id="price"
+                        class="form-control"
+                        value="<%= campaign.target %>"
+                        required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" name="image" id="image" accept="image/*" multiple />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="text" name="campaign[price]" id="price" class="form-control" value="<%= campaign.target %>" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="file" name="image" id="image" accept="image/*" multiple>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please fill out this field.
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
-    <% if(campaign.images.length > 0) {%>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+        <% if(campaign.images.length > 0) {%>
         <div class="col-6">
             <h5 class="text-center">Delete Images</h5>
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="checkAll">
+                <input type="checkbox" class="form-check-input" id="checkAll" />
                 <label class="form-check-label" for="checkAll">Check All</label>
             </div>
             <form action="/campaigns/<%= campaign._id %>/images?_method=DELETE" method="post" class="d-flex flex-wrap">
-                <% campaign.images.forEach((image, index) =>  {%>
+                <% campaign.images.forEach((image, index) => {%>
                 <div class="col-md-4">
                     <div class="card mb-3">
-                        <img src="/images/<%= image.filename %>"  class="card-img-top">
+                        <img src="<%= image.url %>" class="card-img-top" />
                         <div class="card-body">
                             <label class="custom-checkbox">
-                                <input type="checkbox" name="images[]" value="<%= image.url %>">
+                                <input type="checkbox" name="images[]" value="<%= image.public_id %>" />
                                 <span class="custom-checkbox-text">Pilih</span>
                             </label>
                         </div>
@@ -72,14 +75,14 @@
                 <button class="btn btn-success flex-grow-0" type="submit">Delete</button>
             </form>
         </div>
-    <% } %>
+        <% } %>
     </div>
 </section>
 <script>
-    document.getElementById('checkAll').addEventListener('change', function() {
-        const checkboxes = document.getElementsByName('images[]');
+    document.getElementById('checkAll').addEventListener('change', function () {
+        const checkboxes = document.getElementsByName('images[]')
         for (let i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked = this.checked;
+            checkboxes[i].checked = this.checked
         }
-    });
+    })
 </script>

@@ -1,18 +1,18 @@
-import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
-import passportLocalMongoose from 'passport-local-mongoose';
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema
+import passportLocalMongoose from 'passport-local-mongoose'
 
 const userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
-    role : {
+    role: {
         type: String,
-    }
+    },
 })
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose)
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model('User', userSchema)

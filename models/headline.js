@@ -5,31 +5,31 @@ import Review from './review.js'
 const headlineSchema = new Schema({
     title: String,
     description: String,
-    target : Number,
+    target: Number,
     images: [
         {
             url: String,
-            filename: String
-        }
+            filename: String,
+        },
     ],
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
     },
     reviews: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Review'
-        }
-    ]
+            ref: 'Review',
+        },
+    ],
 })
 
 headlineSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
             _id: {
-                $in: doc.reviews
-            }
+                $in: doc.reviews,
+            },
         })
     }
 })
