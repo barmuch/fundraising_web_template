@@ -1,6 +1,7 @@
 import ejsMate from 'ejs-mate'
 import express from 'express'
 import session from 'express-session'
+import httpStatus from 'http-status'
 import flash from 'connect-flash'
 import methodOverride from 'method-override'
 import path from 'path'
@@ -10,6 +11,8 @@ import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
 
 //module
+import { errorConverter, errorHandler } from './middlewares/error.js'
+import morgan from './configs/morgan.js'
 import ExpressError from './utils/ExpressError.js'
 import wrapAsync from './utils/wrapAsync.js'
 import Campaign from './models/campaign.js'
@@ -25,6 +28,10 @@ dotenv.config()
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+// logger
+app.use(morgan.successHandler)
+app.use(morgan.errorHandler)
 
 // middleware
 app.use(express.urlencoded({ extended: true }))
@@ -85,7 +92,7 @@ app.use('/articles', routerArticle)
 app.use('/payment', routerPayment)
 
 app.all('*', (req, res, next) => {
-    next(new ExpressError('Page not found', 404))
+    next(new ExpressError('Page not found', httpStatus.NOT_FOUND))
 })
 
 app.use((err, req, res, next) => {
@@ -93,5 +100,11 @@ app.use((err, req, res, next) => {
     if (!err.message) err.message = 'Oh No, Something Went Wrong!'
     res.status(statusCode).render('error', { err })
 })
+
+// convert error to ExpressError, if needed
+app.use(errorConverter)
+
+// handle error
+app.use(errorHandler)
 
 export default app

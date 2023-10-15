@@ -17,7 +17,6 @@ const store = async (req, res) => {
     req.flash('success_msg', 'Review Created!')
     res.redirect(`/places/${place_id}`)
 }
-console.log(show)
 const destroy = async (req, res) => {
     const { place_id, review_id } = req.params
     await Place.findByIdAndUpdate(place_id, { $pull: { reviews: review_id } })

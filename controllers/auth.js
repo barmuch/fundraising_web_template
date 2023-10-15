@@ -1,6 +1,6 @@
 import User from '../models/user.js'
 
-const register = async (req, res) => {
+const register = async (req, res, next) => {
     try {
         const { email, username, password } = req.body
         const user = new User({ email, username })
@@ -25,7 +25,7 @@ const login = (req, res) => {
     res.redirect('/')
 }
 
-const logout = (req, res) => {
+const logout = (req, res, next) => {
     req.logout(function (err) {
         if (err) {
             return next(err)

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import mongoose from 'mongoose'
 import Campaign from '../models/campaign.js'
 

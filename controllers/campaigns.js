@@ -84,8 +84,8 @@ const destroy = async (req, res) => {
 }
 
 const destroyImages = async (req, res) => {
+    const { id } = req.params
     try {
-        const { id } = req.params
         const { images } = req.body
 
         // Cek apakah model Place ditemukan berdasarkan ID-nya
@@ -114,7 +114,6 @@ const destroyImages = async (req, res) => {
         req.flash('success_msg', 'Successfully deleted images')
         return res.redirect(`/campaigns/${id}/edit`)
     } catch (err) {
-        console.error(err)
         req.flash('error_msg', 'Failed to delete images')
         return res.redirect(`/campaigns/${id}/edit`)
     }
