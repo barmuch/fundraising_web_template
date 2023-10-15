@@ -23,352 +23,202 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="swiper-slide carousel-item-a intro-item bg-image"
-                    style="background-image: url(images/air.jpg)">
-                    <div class="overlay overlay-a"></div>
-                    <div class="intro-content display-table">
-                        <div class="table-cell">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-8">
-                                        <div class="intro-body">
-                                            <h1 class="intro-title mb-4">Bantuan Air Bersih</h1>
-                                            <p class="intro-subtitle intro-price">
-                                                <a href="program-bunyan-peduli.html"
-                                                    ><span class="price-a">Donasi</span></a
-                                                >
-                                            </p>
-                                        </div>
-                                    </div>
+            </div>
+        </div>
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(images/air.jpg)">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+                <div class="table-cell">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="intro-body">
+                                    <h1 class="intro-title mb-4">Bantuan Air Bersih</h1>
+                                    <p class="intro-subtitle intro-price">
+                                        <a href="program-bunyan-peduli.html"><span class="price-a">Donasi</span></a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div
-                            class="swiper-slide carousel-item-a intro-item bg-image"
-                            style="background-image: url(images/hafiz.jpg)">
-                            <div class="overlay overlay-a"></div>
-                            <div class="intro-content display-table">
-                                <div class="table-cell">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-8">
-                                                <div class="intro-body">
-                                                    <h1 class="intro-title mb-4">Program Beasiswa Penghafal Qur'an</h1>
-                                                    <p class="intro-subtitle intro-price">
-                                                        <a href="program-beasiswa-alqur'an.html"
-                                                            ><span class="price-a">Donasi</span></a
-                                                        >
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(images/hafiz.jpg)">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+                <div class="table-cell">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="intro-body">
+                                    <h1 class="intro-title mb-4">Program Beasiswa Penghafal Qur'an</h1>
+                                    <p class="intro-subtitle intro-price">
+                                        <a href="program-beasiswa-alqur'an.html"><span class="price-a">Donasi</span></a>
+                                    </p>
                                 </div>
-                                <div class="swiper-pagination"></div>
                             </div>
-                            <!-- End Intro Section -->
-
-                            <!-- Article Start -->
-                            <section class="section-property section-t8">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="title-wrap d-flex justify-content-between">
-                                                <div class="title-box">
-                                                    <h2 class="title-a">Campaign</h2>
-                                                    <a href="/campaigns/index"
-                                                        >Kelola Campaign
-                                                        <span class="bi bi-chevron-right"></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="property-carousel" class="swiper">
-                                        <div class="swiper-wrapper">
-                                            <% for (const campaign of campaigns) { %>
-                                            <div class="carousel-item-b swiper-slide">
-                                                <div class="card-box-a card-shadow">
-                                                    <div class="img-box-a">
-                                                        <% for (const image of campaign.images) { %>
-                                                        <img
-                                                            src="/images/<%= image.filename %>"
-                                                            alt=""
-                                                            class="img-a img-fluid" />
-                                                        <% } %>
-                                                    </div>
-                                                    <div class="card-overlay">
-                                                        <div class="card-overlay-a-content">
-                                                            <div class="card-header-a">
-                                                                <h2 class="card-title-a">
-                                                                    <a href="/campaigns/<%=campaign._id %>"
-                                                                        ><%= campaign.title %></a
-                                                                    >
-                                                                </h2>
-                                                            </div>
-                                                            <div class="card-body-a">
-                                                                <div class="progress">
-                                                                    <div
-                                                                        class="progress-bar"
-                                                                        role="progressbar"
-                                                                        aria-label="Example with label"
-                                                                        style="width: 30%"
-                                                                        aria-valuenow="30"
-                                                                        aria-valuemin="0"
-                                                                        aria-valuemax="100">
-                                                                        <%= campaign.deskripsi %>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="/campaigns/<%=campaign._id %>" class="link-a"
-                                                                    >Donasi
-                                                                    <span class="bi bi-chevron-right"></span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="card-footer-a">
-                                                                <ul class="card-info d-flex justify-content-around">
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Dana Terkumpul</h4>
-                                                                        <span>Rp.3.546.469,- </span>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Target</h4>
-                                                                        <span>Rp.100.000.000,-</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <% } %>
-                                        </div>
-                                    </div>
-
-                                    <div class="propery-carousel-pagination carousel-pagination"></div>
-                                </div>
-                            </section>
-                            <!-- campaign End -->
-                            <!-- Article Start -->
-                            <section class="section-property section-t8">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="title-wrap d-flex justify-content-between">
-                                                <div class="title-box">
-                                                    <h2 class="title-a">Artikel</h2>
-                                                    <a href="/campaigns/index"
-                                                        >Kelola Article
-                                                        <span class="bi bi-chevron-right"></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="property-carousel" class="swiper">
-                                        <div class="swiper-wrapper">
-                                            <% for (const article of articles) { %>
-                                            <div class="carousel-item-b swiper-slide">
-                                                <div class="card-box-a card-shadow">
-                                                    <div class="img-box-a">
-                                                        <% for (const image of article.images) { %>
-                                                        <img
-                                                            src="/images/<%= image.filename %>"
-                                                            alt=""
-                                                            class="img-a img-fluid" />
-                                                        <% } %>
-                                                    </div>
-                                                    <div class="card-overlay">
-                                                        <div class="card-overlay-a-content">
-                                                            <div class="card-header-a">
-                                                                <h2 class="card-title-a">
-                                                                    <a href="/articles/<%= article._id %>"
-                                                                        ><%= article.title %></a
-                                                                    >
-                                                                </h2>
-                                                            </div>
-                                                            <div class="card-body-a">
-                                                                <div class="progress">
-                                                                    <div
-                                                                        class="progress-bar"
-                                                                        role="progressbar"
-                                                                        aria-label="Example with label"
-                                                                        style="width: 30%"
-                                                                        aria-valuenow="30"
-                                                                        aria-valuemin="0"
-                                                                        aria-valuemax="100">
-                                                                        <%= article.deskripsi %>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Close missing div tags -->
-
-                                            <% } %>
-                                        </div>
-                                    </div>
-
-                                    <div id="property-carousel" class="swiper">
-                                        <div class="swiper-wrapper">
-                                            <% for (const campaign of campaigns) { %>
-                                            <div class="carousel-item-b swiper-slide">
-                                                <div class="card-box-a card-shadow">
-                                                    <div class="img-box-a">
-                                                        <% for (const image of campaign.images) { %>
-                                                        <img
-                                                            src="/images/<%= image.filename %>"
-                                                            alt=""
-                                                            class="img-a img-fluid" />
-                                                        <% } %>
-                                                    </div>
-                                                    <div class="card-overlay">
-                                                        <div class="card-overlay-a-content">
-                                                            <div class="card-header-a">
-                                                                <h2 class="card-title-a">
-                                                                    <a href="/campaigns/<%=campaign._id %>"
-                                                                        ><%= campaign.title %></a
-                                                                    >
-                                                                </h2>
-                                                            </div>
-                                                            <div class="card-body-a">
-                                                                <div class="progress">
-                                                                    <div
-                                                                        class="progress-bar"
-                                                                        role="progressbar"
-                                                                        aria-label="Example with label"
-                                                                        style="width: 30%"
-                                                                        aria-valuenow="30"
-                                                                        aria-valuemin="0"
-                                                                        aria-valuemax="100">
-                                                                        <%= campaign.deskripsi %>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="/campaigns/<%=campaign._id %>" class="link-a"
-                                                                    >Donasi
-                                                                    <span class="bi bi-chevron-right"></span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="card-footer-a">
-                                                                <ul class="card-info d-flex justify-content-around">
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Dana Terkumpul</h4>
-                                                                        <span>Rp.3.546.469,- </span>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Target</h4>
-                                                                        <span>Rp.100.000.000,-</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <% } %>
-                                        </div>
-                                    </div>
-
-                                    <div class="propery-carousel-pagination carousel-pagination"></div>
-                                </div>
-                            </section>
-                            <!-- Campaigns End -->
-
-                            <!-- Article Start -->
-                            <section class="section-property section-t8">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="title-wrap d-flex justify-content-between">
-                                                <div class="title-box">
-                                                    <h2 class="title-a">Artikel</h2>
-                                                    <a href="/articles/index">Kelola Article</a>
-                                                </div>
-                                                <div class="title-link">
-                                                    <a href="program.html"
-                                                        >Selengkapnya
-                                                        <span class="bi bi-chevron-right"></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="property-carousel" class="swiper">
-                                        <div class="swiper-wrapper">
-                                            <% for (const article of articles) { %>
-                                            <div class="carousel-item-b swiper-slide">
-                                                <div class="card-box-a card-shadow">
-                                                    <div class="img-box-a">
-                                                        <% for (const image of article.images) { %>
-                                                        <img
-                                                            src="/images/<%= image.filename %>"
-                                                            alt=""
-                                                            class="img-a img-fluid" />
-                                                        <% } %>
-                                                    </div>
-                                                    <div class="card-overlay">
-                                                        <div class="card-overlay-a-content">
-                                                            <div class="card-header-a">
-                                                                <h2 class="card-title-a">
-                                                                    <a href="/articles/<%=article._id %>"
-                                                                        ><%= article.title %></a
-                                                                    >
-                                                                </h2>
-                                                            </div>
-                                                            <div class="card-body-a">
-                                                                <div class="progress">
-                                                                    <div
-                                                                        class="progress-bar"
-                                                                        role="progressbar"
-                                                                        aria-label="Example with label"
-                                                                        style="width: 30%"
-                                                                        aria-valuenow="30"
-                                                                        aria-valuemin="0"
-                                                                        aria-valuemax="100">
-                                                                        <%= article.deskripsi %>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="/articles/<%=article._id %>" class="link-a"
-                                                                    >Donasi
-                                                                    <span class="bi bi-chevron-right"></span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="card-footer-a">
-                                                                <ul class="card-info d-flex justify-content-around">
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Dana Terkumpul</h4>
-                                                                        <span>Rp.3.546.469,- </span>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Target</h4>
-                                                                        <span>Rp.100.000.000,-</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <% } %>
-                                        </div>
-                                    </div>
-
-                                    <div class="propery-carousel-pagination carousel-pagination"></div>
-                                </div>
-                            </section>
-                            <!-- Article End -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="swiper-pagination"></div>
 </div>
+<!-- End Intro Section -->
+
+<!-- Article Start -->
+<section class="section-property section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Campaign</h2>
+                        <a href="/campaigns/index"
+                            >Kelola Campaign
+                            <span class="bi bi-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="property-carousel" class="swiper">
+            <div class="swiper-wrapper">
+                <% for (const campaign of campaigns) { %>
+                <div class="carousel-item-b swiper-slide">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <% for (const image of campaign.images) { %>
+                            <img src="<%= image.url %>" alt="" class="img-a img-fluid" />
+                            <% } %>
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="/campaigns/<%=campaign._id %>"><%= campaign.title %></a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="progress">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            aria-label="Example with label"
+                                            style="width: 30%"
+                                            aria-valuenow="30"
+                                            aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <%= campaign.deskripsi %>
+                                        </div>
+                                    </div>
+                                    <a href="/campaigns/<%=campaign._id %>" class="link-a"
+                                        >Donasi
+                                        <span class="bi bi-chevron-right"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Dana Terkumpul</h4>
+                                            <span>Rp.3.546.469,- </span>
+                                        </li>
+
+                                        <li>
+                                            <h4 class="card-info-title">Target</h4>
+                                            <span>Rp.100.000.000,-</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="propery-carousel-pagination carousel-pagination"></div>
+    </div>
+</section>
+<!-- campaign End -->
+<!-- Article Start -->
+<section class="section-property section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Artikel</h2>
+                        <a href="/campaigns/index"
+                            >Kelola Article
+                            <span class="bi bi-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="property-carousel" class="swiper">
+            <div class="swiper-wrapper">
+                <% for (const article of articles) { %>
+                <div class="carousel-item-b swiper-slide">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <% for (const image of article.images) { %>
+                            <img src="<%= image.url %>" alt="" class="img-a img-fluid" />
+                            <% } %>
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="/articles/<%=article._id %>"><%= article.title %></a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="progress">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            aria-label="Example with label"
+                                            style="width: 30%"
+                                            aria-valuenow="30"
+                                            aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <%= article.deskripsi %>
+                                        </div>
+                                    </div>
+                                    <a href="/articles/<%=article._id %>" class="link-a"
+                                        >Donasi
+                                        <span class="bi bi-chevron-right"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Dana Terkumpul</h4>
+                                            <span>Rp.3.546.469,- </span>
+                                        </li>
+
+                                        <li>
+                                            <h4 class="card-info-title">Target</h4>
+                                            <span>Rp.100.000.000,-</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="propery-carousel-pagination carousel-pagination"></div>
+    </div>
+</section>
+<!-- Article End -->
