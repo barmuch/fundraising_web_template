@@ -3,7 +3,6 @@ import express from 'express'
 import session from 'express-session'
 import flash from 'connect-flash'
 import methodOverride from 'method-override'
-import mongoose from 'mongoose'
 import path from 'path'
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
@@ -26,17 +25,7 @@ dotenv.config()
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const port = process.env.PORT
-const db_URI = process.env.DB_URI
-// connect to mongodb
-mongoose
-    .connect(db_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('Connected to the database...')
-    })
-    .catch((error) => {
-        console.error('Connection error:', error)
-    })
+
 // middleware
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
@@ -105,6 +94,4 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-app.listen(port, () => {
-    console.log(`server is running on http://localhost:3000`)
-})
+export default app

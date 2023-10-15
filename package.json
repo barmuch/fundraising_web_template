@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "type": "module",
-    "main": "app.js",
+    "main": "index.js",
     "scripts": {
-        "start": "node app.js",
-        "dev": "nodemon app.js",
+        "start": "node index.js",
+        "dev": "nodemon index.js",
         "format": "prettier --write '**/*.{js,html,css,ejs,json}'",
         "format:check": "prettier --check '**/*.{js,html,css,ejs,json}'",
         "prepare": "husky install",
