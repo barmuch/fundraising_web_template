@@ -6,13 +6,10 @@ import flash from 'connect-flash'
 import methodOverride from 'method-override'
 import path from 'path'
 import passport from 'passport'
-import LocalStrategy from 'passport-local'
 import { fileURLToPath } from 'url'
 import config from './configs/vars.js'
 
 //module
-import { errorConverter, errorHandler } from './middlewares/error.js'
-import morgan from './configs/morgan.js'
 import ExpressError from './utils/ExpressError.js'
 import wrapAsync from './utils/wrapAsync.js'
 import Campaign from './models/campaign.js'
@@ -21,15 +18,10 @@ import routerUser from './routes/user.js'
 import routerCampaign from './routes/campaign.js'
 import routerPayment from './routes/payment.js'
 import routerArticle from './routes/article.js'
-import User from './models/user.js'
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-
-// logger
-app.use(morgan.successHandler)
-app.use(morgan.errorHandler)
 
 // middleware
 app.use(express.urlencoded({ extended: true }))
@@ -52,9 +44,7 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
-passport.use(new LocalStrategy(User.authenticate()))
-passport.serializeUser(User.serializeUser())
-passport.deserializeUser(User.deserializeUser())
+import './configs/passport.js'
 
 app.use((req, res, next) => {
     res.locals.currentUser = req.user
@@ -75,6 +65,7 @@ app.get(
     wrapAsync(async (req, res) => {
         const campaigns = await Campaign.find()
         const articles = await Article.find()
+        console.log(req.user)
         res.render('home', { campaigns, articles })
     })
 )
@@ -94,15 +85,12 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
+    if (err) {
+        console.log(err)
+    }
     const { statusCode = 500 } = err
     if (!err.message) err.message = 'Oh No, Something Went Wrong!'
     res.status(statusCode).render('error', { err })
 })
-
-// convert error to ExpressError, if needed
-app.use(errorConverter)
-
-// handle error
-app.use(errorHandler)
 
 export default app

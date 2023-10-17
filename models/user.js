@@ -8,9 +8,8 @@ const userSchema = new Schema({
         required: true,
         unique: true,
     },
-    role: {
-        type: String,
-    },
+    role: { type: String },
+    googleId: { type: String },
 })
 
 userSchema.plugin(passportLocalMongoose)

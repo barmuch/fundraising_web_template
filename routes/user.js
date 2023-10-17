@@ -1,9 +1,10 @@
 import express from 'express'
-const router = express.Router()
+import passport from 'passport'
 // import User from'../models/user.js';
 import * as AuthController from '../controllers/auth.js'
 import wrapAsync from '../utils/wrapAsync.js'
-import passport from 'passport'
+import config from '../configs/vars.js'
+const router = express.Router()
 
 router
     .route('/register')
@@ -27,5 +28,14 @@ router
     )
 
 router.post('/logout', AuthController.logout)
+
+router.route('/auth/google').get(passport.authenticate('google'))
+
+router.route('/redirect/google').get(
+    passport.authenticate('google', {
+        successReturnToOrRedirect: '/',
+        failureRedirect: '/login',
+    })
+)
 
 export default router

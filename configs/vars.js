@@ -12,4 +12,6 @@ export default {
     cloudinary_API_SECRET: process.env.CLOUDINARY_API_SECRET,
     cloudinary_UPLOAD_PRESET_CAMPAIGN: process.env.CLOUDINARY_UPLOAD_PRESET_CAMPAIGN,
     cloudinary_UPLOAD_PRESET_ARTICLE: process.env.CLOUDINARY_UPLOAD_PRESET_ARTICLE,
+    google_CLIENT_ID: process.env.GOOGLE_OAUTH_CLIENT_ID,
+    google_CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
 }
