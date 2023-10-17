@@ -1,9 +1,8 @@
 import express from 'express'
 import passport from 'passport'
-// import User from'../models/user.js';
 import * as AuthController from '../controllers/auth.js'
 import wrapAsync from '../utils/wrapAsync.js'
-import config from '../configs/vars.js'
+import validateUser from '../middlewares/validateUser.js'
 const router = express.Router()
 
 router
@@ -11,7 +10,7 @@ router
     .get((req, res) => {
         res.render('auth/register')
     })
-    .post(wrapAsync(AuthController.register))
+    .post(validateUser, wrapAsync(AuthController.register))
 
 router
     .route('/login')

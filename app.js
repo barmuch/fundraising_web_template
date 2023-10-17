@@ -84,6 +84,7 @@ app.all('*', (req, res, next) => {
     next(new ExpressError('Page not found', httpStatus.NOT_FOUND))
 })
 
+// Error handling
 app.use((err, req, res, next) => {
     if (err) {
         console.log(err)
