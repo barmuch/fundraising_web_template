@@ -1,19 +1,15 @@
 import app from './app.js'
-import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import logger from './configs/logger.js'
-dotenv.config()
-
-const port = process.env.PORT
-const db_URI = process.env.DB_URI
+import config from './configs/vars.js'
 
 let server
 
 // connect to mongodb
-mongoose.connect(db_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(config.db_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     logger.info('Connected to MongoDB')
-    server = app.listen(port, () => {
-        logger.info(`listening on port ${port}`)
+    server = app.listen(config.port, () => {
+        logger.info(`listening on port ${config.port}`)
     })
 })
 

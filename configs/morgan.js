@@ -1,13 +1,10 @@
 import morgan from 'morgan'
-import dotenv from 'dotenv'
 import logger from './logger.js'
-
-dotenv.config()
-const env = process.env.NODE_ENV
+import config from './vars.js'
 
 morgan.token('message', (req, res) => res.locals.errorMessage || '')
 
-const getIpFormat = () => (env === 'production' ? ':remote-addr - ' : '')
+const getIpFormat = () => (config.env === 'production' ? ':remote-addr - ' : '')
 const successResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms`
 const errorResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms - message: :message`
 

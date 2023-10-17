@@ -8,7 +8,7 @@ import path from 'path'
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
 import { fileURLToPath } from 'url'
-import dotenv from 'dotenv'
+import config from './configs/vars.js'
 
 //module
 import { errorConverter, errorHandler } from './middlewares/error.js'
@@ -22,8 +22,6 @@ import routerCampaign from './routes/campaign.js'
 import routerPayment from './routes/payment.js'
 import routerArticle from './routes/article.js'
 import User from './models/user.js'
-
-dotenv.config()
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
@@ -40,7 +38,7 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(
     session({
-        secret: process.env.SESSION_SECRET,
+        secret: config.session_SECRET,
         resave: false,
         saveUninitialized: false,
         cookie: {

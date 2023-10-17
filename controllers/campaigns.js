@@ -1,9 +1,7 @@
 import Campaign from '../models/campaign.js'
 import User from '../models/user.js'
 import * as cloudinaryService from '../services/cloudinary.js'
-import dotenv from 'dotenv'
-
-dotenv.config()
+import config from '../configs/vars.js'
 
 const index = async (req, res) => {
     const campaigns = await Campaign.find()
@@ -17,7 +15,7 @@ const create = (req, res) => {
 
 const store = async (req, res, next) => {
     // upload image to cloudinary
-    const images = await cloudinaryService.upload(req.files, process.env.CLOUDINARY_UPLOAD_PRESET_CAMPAIGN)
+    const images = await cloudinaryService.upload(req.files, config.cloudinary_UPLOAD_PRESET_CAMPAIGN)
     const campaign = new Campaign(req.body.campaign)
     campaign.images = images
     await campaign.save()
@@ -55,7 +53,7 @@ const update = async (req, res) => {
         await cloudinaryService.destroy(publicIds)
 
         // upload new images
-        const images = await cloudinaryService.upload(req.files, process.env.CLOUDINARY_UPLOAD_PRESET_CAMPAIGN)
+        const images = await cloudinaryService.upload(req.files, config.cloudinary_UPLOAD_PRESET_CAMPAIGN)
         campaign.images = images
         await campaign.save()
     }

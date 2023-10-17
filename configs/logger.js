@@ -1,8 +1,5 @@
 import winston from 'winston'
-import dotenv from 'dotenv'
-dotenv.config()
-
-const env = process.env.NODE_ENV
+import config from './vars.js'
 
 const enumerateErrorFormat = winston.format((info) => {
     if (info instanceof Error) {
@@ -12,10 +9,10 @@ const enumerateErrorFormat = winston.format((info) => {
 })
 
 const logger = winston.createLogger({
-    level: env === 'development' ? 'debug' : 'info',
+    level: config.env === 'development' ? 'debug' : 'info',
     format: winston.format.combine(
         enumerateErrorFormat(),
-        env === 'development' ? winston.format.colorize() : winston.format.uncolorize(),
+        config.env === 'development' ? winston.format.colorize() : winston.format.uncolorize(),
         winston.format.splat(),
         winston.format.printf(({ level, message }) => `${level}: ${message}`)
     ),
