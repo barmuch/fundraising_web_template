@@ -1,8 +1,12 @@
 import express from 'express'
 import passport from 'passport'
+
 import * as AuthController from '../controllers/auth.js'
-import wrapAsync from '../utils/wrapAsync.js'
+
 import validateUser from '../middlewares/validateUser.js'
+
+import wrapAsync from '../utils/wrapAsync.js'
+
 const router = express.Router()
 
 router

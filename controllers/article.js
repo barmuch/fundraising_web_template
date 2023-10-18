@@ -1,5 +1,7 @@
 import Article from '../models/Article.js'
+
 import * as cloudinaryService from '../services/cloudinary.service.js'
+
 import config from '../configs/vars.js'
 
 const index = async (req, res) => {

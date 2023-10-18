@@ -1,7 +1,8 @@
-import app from './app.js'
 import mongoose from 'mongoose'
-import config from './configs/vars.js'
+
+import app from './app.js'
 import logger from './configs/logger.js'
+import config from './configs/vars.js'
 
 let server
 

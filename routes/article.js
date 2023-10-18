@@ -1,10 +1,15 @@
 import express from 'express'
-import wrapAsync from '../utils/wrapAsync.js'
+
 import * as ArticleController from '../controllers/article.js'
-import isValidObjectId from '../middlewares/isValidObjectId.js'
+
 import isAdmin from '../middlewares/isAdmin.js'
+import isValidObjectId from '../middlewares/isValidObjectId.js'
 import validateArticle from '../middlewares/validateArticle.js'
+
+import wrapAsync from '../utils/wrapAsync.js'
+
 import upload from '../configs/multer.js'
+
 const router = express.Router()
 
 router.route('/').post(upload.array('image', 5), validateArticle, wrapAsync(ArticleController.store))

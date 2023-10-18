@@ -1,16 +1,20 @@
+import flash from 'connect-flash'
 import ejsMate from 'ejs-mate'
 import express from 'express'
 import session from 'express-session'
 import httpStatus from 'http-status'
-import flash from 'connect-flash'
 import methodOverride from 'method-override'
-import path from 'path'
 import passport from 'passport'
+import path from 'path'
 import { fileURLToPath } from 'url'
-import config from './configs/vars.js'
-import { successHandler, errorHandler } from './configs/morgan.js'
+
 import routes from './routes/index.js'
+
 import ExpressError from './utils/ExpressError.js'
+
+import { errorHandler, successHandler } from './configs/morgan.js'
+import passportInit from './configs/passport.js'
+import config from './configs/vars.js'
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
@@ -40,7 +44,7 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
-import './configs/passport.js'
+passportInit()
 
 app.use((req, res, next) => {
     res.locals.currentUser = req.user

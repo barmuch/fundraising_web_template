@@ -1,13 +1,13 @@
 import express from 'express'
-import config from '../configs/vars.js'
 
-import homeRoute from './home.js'
-import contactRoute from './contact.js'
-import authRoute from './auth.js'
-import userRoute from './user.js'
-import campaignRote from './campaign.js'
+import config from '../configs/vars.js'
 import articleRoute from './article.js'
+import authRoute from './auth.js'
+import campaignRote from './campaign.js'
+import contactRoute from './contact.js'
 import errorRoute from './error.js'
+import homeRoute from './home.js'
+import userRoute from './user.js'
 
 const router = express.Router()
 

@@ -1,5 +1,6 @@
-import ExpressError from '../utils/ExpressError.js'
 import { userSchema } from '../schemas/user.js'
+
+import ExpressError from '../utils/ExpressError.js'
 
 export default (req, res, next) => {
     const { error } = userSchema.validate(req.body)

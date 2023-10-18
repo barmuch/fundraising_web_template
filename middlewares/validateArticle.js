@@ -1,4 +1,5 @@
 import { articleSchema } from '../schemas/article.js'
+
 import ExpressError from '../utils/ExpressError.js'
 
 export default (req, res, next) => {
