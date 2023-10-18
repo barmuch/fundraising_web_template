@@ -9,16 +9,8 @@ import passport from 'passport'
 import { fileURLToPath } from 'url'
 import config from './configs/vars.js'
 import { successHandler, errorHandler } from './configs/morgan.js'
-
-//module
+import routes from './routes/index.js'
 import ExpressError from './utils/ExpressError.js'
-import wrapAsync from './utils/wrapAsync.js'
-import Campaign from './models/campaign.js'
-import Article from './models/Article.js'
-import routerUser from './routes/user.js'
-import routerCampaign from './routes/campaign.js'
-import routerPayment from './routes/payment.js'
-import routerArticle from './routes/article.js'
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
@@ -64,33 +56,8 @@ app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-app.get(
-    '/',
-    wrapAsync(async (req, res) => {
-        const campaigns = await Campaign.find()
-        const articles = await Article.find()
-        res.render('home', { campaigns, articles })
-    })
-)
-
-app.get('/contact', (req, res) => {
-    res.render('contact')
-})
-
-// Example route that triggers an error
-if (config.env === 'development') {
-    app.get('/error', (req, res, next) => {
-        // Simulate an error
-        const err = new Error('This is a simulated error.')
-        next(err)
-    })
-}
-
 // places routes
-app.use('/', routerUser)
-app.use('/campaigns', routerCampaign)
-app.use('/articles', routerArticle)
-app.use('/payment', routerPayment)
+app.use(routes)
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page not found', httpStatus.NOT_FOUND))

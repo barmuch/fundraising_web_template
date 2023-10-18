@@ -13,7 +13,7 @@ const register = async (req, res, next) => {
         })
     } catch (error) {
         req.flash('error_msg', error.message)
-        res.redirect('/register')
+        res.redirect('/auth/register')
     }
 }
 
