@@ -1,5 +1,14 @@
 <% layout('layouts/app') %>
-
-<div class="row">
-    <h4><%= err.message %></h4>
-</div>
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <h4><%= error.message %></h4>
+            <br />
+            <% if (error.stack) { %>
+            <div>
+                <p><%= error.stack %></p>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</section>
