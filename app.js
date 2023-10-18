@@ -8,6 +8,7 @@ import path from 'path'
 import passport from 'passport'
 import { fileURLToPath } from 'url'
 import config from './configs/vars.js'
+import { successHandler, errorHandler } from './configs/morgan.js'
 
 //module
 import ExpressError from './utils/ExpressError.js'
@@ -22,6 +23,9 @@ import routerArticle from './routes/article.js'
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+app.use(successHandler)
+app.use(errorHandler)
 
 // middleware
 app.use(express.urlencoded({ extended: true }))
@@ -65,7 +69,6 @@ app.get(
     wrapAsync(async (req, res) => {
         const campaigns = await Campaign.find()
         const articles = await Article.find()
-        console.log(req.user)
         res.render('home', { campaigns, articles })
     })
 )
@@ -73,6 +76,15 @@ app.get(
 app.get('/contact', (req, res) => {
     res.render('contact')
 })
+
+// Example route that triggers an error
+if (config.env === 'development') {
+    app.get('/error', (req, res, next) => {
+        // Simulate an error
+        const err = new Error('This is a simulated error.')
+        next(err)
+    })
+}
 
 // places routes
 app.use('/', routerUser)
@@ -86,12 +98,16 @@ app.all('*', (req, res, next) => {
 
 // Error handling
 app.use((err, req, res, next) => {
-    if (err) {
-        console.log(err)
-    }
     const { statusCode = 500 } = err
     if (!err.message) err.message = 'Oh No, Something Went Wrong!'
-    res.status(statusCode).render('error', { err })
+    res.locals.errorMessage = err.message
+
+    const error = {}
+    error.message = err.message
+
+    if (config.env === 'development') error.stack = err.stack
+
+    res.status(statusCode).render('error', { error })
 })
 
 export default app

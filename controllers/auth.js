@@ -5,6 +5,7 @@ const register = async (req, res, next) => {
         const { email, username, password } = req.body
         const user = new User({ email, username })
         const registerUser = await User.register(user, password)
+        // TODO: Send verification email
         req.login(registerUser, (err) => {
             if (err) return next(err)
             req.flash('success_msg', 'You are now registered and logged in')

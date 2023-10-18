@@ -13,7 +13,7 @@ passport.use(
         {
             clientID: config.google_CLIENT_ID,
             clientSecret: config.google_CLIENT_SECRET,
-            callbackURL: 'http://localhost:3000/redirect/google',
+            callbackURL: `${config.base_URL}/redirect/google`,
             scope: ['profile', 'email'],
         },
         async function (accessToken, refreshToken, profile, done) {

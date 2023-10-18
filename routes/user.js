@@ -28,7 +28,7 @@ router
 
 router.post('/logout', AuthController.logout)
 
-router.route('/auth/google').get(passport.authenticate('google'))
+router.route('/google').get(passport.authenticate('google'))
 
 router.route('/redirect/google').get(
     passport.authenticate('google', {
