@@ -1,4 +1,5 @@
 import express from 'express'
+import passport from 'passport'
 
 import * as pageController from '../controllers/home.js'
 

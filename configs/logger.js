@@ -17,7 +17,6 @@ const logger = winston.createLogger({
         winston.format.splat(),
         winston.format.printf(({ level, message }) => `${level}: ${message}`)
     ),
-    defaultMeta: { service: 'user-service' },
     transports: [
         //
         // - Write all logs with importance level of `error` or less to `error.log`
