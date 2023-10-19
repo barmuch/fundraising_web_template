@@ -40,4 +40,7 @@ router.route('/redirect/google').get(
     wrapAsync(AuthController.google)
 )
 
+router.route('/send-verification-email').get(wrapAsync(AuthController.sendVerificationEmail))
+router.route('/verify-email/:userId/:uniqueString').get(wrapAsync(AuthController.verifyEmail))
+
 export default router
