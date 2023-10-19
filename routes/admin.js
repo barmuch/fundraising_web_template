@@ -1,34 +1,38 @@
 import express from 'express'
-import wrapAsync from '../utils/wrapAsync.js'
+
 import * as CampaignController from '../controllers/campaigns.js'
-import isValidObjectId from '../middlewares/isValidObjectId.js'
+
 import isAdmin from '../middlewares/isAdmin.js'
-import validateCampaign from '../middlewares/validateCampaign.js'
-import { isAuthorPlace } from '../middlewares/isAuthor.js'
-import Campaign from '../models/campaign.js'
+import isValidObjectId from '../middlewares/isValidObjectId.js'
+
 import Article from '../models/Article.js'
+import Campaign from '../models/campaign.js'
+
+import wrapAsync from '../utils/wrapAsync.js'
+
 import upload from '../configs/multer.js'
+
 const router = express.Router()
 
-router.get('/', (req,res) => {
-    res.render('dashboard/index') 
+router.get('/', isAdmin, (req, res) => {
+    res.render('dashboard/index')
 })
 
-router.get('/donatur', (req,res) => {    
-    res.render('dashboard/donatur') 
+router.get('/donatur', isAdmin, (req, res) => {
+    res.render('dashboard/donatur')
 })
 
-router.get('/campaigns', async (req,res) => {
-    const campaigns = await Campaign.find()  
-    res.render('dashboard/campaigns', { campaigns})
+router.get('/campaigns', isAdmin, async (req, res) => {
+    const campaigns = await Campaign.find()
+    res.render('dashboard/campaigns', { campaigns })
 })
 
-router.get('/articles', async (req,res) => {
-    const articles = await Article.find()  
-    res.render('dashboard/articles', { articles})
+router.get('/articles', isAdmin, async (req, res) => {
+    const articles = await Article.find()
+    res.render('dashboard/articles', { articles })
 })
 
-router.get('/index', CampaignController.index)
+router.get('/index', isAdmin, CampaignController.index)
 
 router
     .route('/:id')

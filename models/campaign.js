@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
-const Schema = mongoose.Schema
+
 import Review from './review.js'
+
+const Schema = mongoose.Schema
 
 const campaignSchema = new Schema({
     title: String,

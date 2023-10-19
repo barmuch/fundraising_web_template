@@ -1,0 +1,38 @@
+{
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "tabWidth": 4,
+    "bracketSameLine": true,
+    "overrides": [
+        {
+            "files": "*.ejs",
+            "options": {
+                "parser": "html"
+            }
+        }
+    ],
+    "plugins": ["@trivago/prettier-plugin-sort-imports"],
+    "importOrder": [
+        "^./config/(.*)$",
+        "^./controllers/(.*)$",
+        "^./middlewares/(.*)$",
+        "^./models/(.*)$",
+        "^./routes/(.*)$",
+        "^./schemas/(.*)$",
+        "^./services/(.*)$",
+        "^./utils/(.*)$",
+        "^../config/(.*)$",
+        "^../controllers/(.*)$",
+        "^../middlewares/(.*)$",
+        "^../models/(.*)$",
+        "^../routes/(.*)$",
+        "^../schemas/(.*)$",
+        "^../services/(.*)$",
+        "^../utils/(.*)$",
+        "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}

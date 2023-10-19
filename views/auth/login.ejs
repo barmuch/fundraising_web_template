@@ -3,7 +3,7 @@
     <div class="row">
         <h1 class="text-center">Login</h1>
         <div class="col-6 offset-3">
-            <form action="/login" method="POST" class="validated-form" novalidate>
+            <form action="/auth/login" method="POST" class="validated-form" novalidate>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" name="username" id="username" class="form-control" required />
@@ -16,6 +16,7 @@
                 </div>
                 <button type="submit" class="btn btn-success">Login</button>
             </form>
+            <%- include('partials/google') %>
         </div>
     </div>
 </section>
