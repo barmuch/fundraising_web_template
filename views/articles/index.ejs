@@ -11,9 +11,6 @@
                         >"Mari ikut serta dalam gerakan Bersatu Menebar Kebaikan bersama Laz Bunyan"</span
                     >
                     <br /><br />
-                    <% if(currentUser && currentUser.role === 'admin') { %>
-                    <a href="/articles/create" class="card-link btn btn-warning text-white">Add New Article</a>
-                    <% } %>
                 </div>
             </div>
         </div>
@@ -40,18 +37,6 @@
                             </div>
 
                             <div class="card-body-a">
-                                <% if (currentUser && currentUser.role === 'admin') { %>
-                                <a href="/articles/<%= article._id %>" class="card-link btn btn-warning text-white"
-                                    >View</a
-                                >
-                                <form
-                                    action="/articles/<%= article._id %>?_method=DELETE"
-                                    method="POST"
-                                    style="display: inline !important">
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                                <% } %>
-
                                 <div class="progress mt-2">
                                     <div
                                         class="progress-bar"

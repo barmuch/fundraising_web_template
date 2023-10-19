@@ -50,18 +50,13 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function () {
-                // Saat halaman dimuat, periksa apakah telah discroll
                 if ($(window).scrollTop() > 50) {
                     $('.navbar').addClass('scrolled')
-                }
-
-                // Ketika halaman discroll
+                }               
                 $(window).scroll(function () {
-                    // Jika scroll mencapai 50px dari atas, tambahkan kelas 'scrolled' ke navbar
                     if ($(this).scrollTop() > 50) {
                         $('.navbar').addClass('scrolled')
                     } else {
-                        // Jika tidak, hapus kelas 'scrolled'
                         $('.navbar').removeClass('scrolled')
                     }
                 })

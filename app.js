@@ -17,8 +17,8 @@ import Campaign from './models/campaign.js'
 import Article from './models/Article.js'
 import routerUser from './routes/user.js'
 import routerCampaign from './routes/campaign.js'
-import routerPayment from './routes/payment.js'
 import routerArticle from './routes/article.js'
+import routerAdmin from './routes/admin.js'
 import User from './models/user.js'
 
 dotenv.config()
@@ -93,7 +93,7 @@ app.get('/contact', (req, res) => {
 app.use('/', routerUser)
 app.use('/campaigns', routerCampaign)
 app.use('/articles', routerArticle)
-app.use('/payment', routerPayment)
+app.use('/admin', routerAdmin)
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page not found', 404))

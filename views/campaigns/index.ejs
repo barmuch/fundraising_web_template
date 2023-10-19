@@ -11,9 +11,6 @@
                         >"Mari ikut serta dalam gerakan Bersatu Menebar Kebaikan bersama Laz Bunyan"</span
                     >
                     <br /><br />
-                    <% if(currentUser && currentUser.role === 'admin') { %>
-                    <a href="/campaigns/create" class="card-link btn btn-warning text-white">Add new campaign</a>
-                    <% } %>
                 </div>
             </div>
         </div>
@@ -40,12 +37,6 @@
                             </div>
 
                             <div class="card-body-a">
-                                <% if (currentUser && currentUser.role === 'admin') { %>
-                                <a href="/campaigns/<%= campaign._id %>" class="card-link btn btn-warning text-white">
-                                    View
-                                </a>
-                                <% } %>
-
                                 <div class="progress mt-2">
                                     <div
                                         class="progress-bar"
