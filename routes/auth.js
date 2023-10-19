@@ -40,9 +40,4 @@ router.route('/redirect/google').get(
     wrapAsync(AuthController.google)
 )
 
-router.route('/forgot-password').post(wrapAsync(AuthController.forgotPassword))
-router.route('/reset-password').post(wrapAsync(AuthController.resetPassword))
-router.route('/send-verification-email').post(wrapAsync(AuthController.sendVerificationEmail))
-router.route('/verify-email').post(wrapAsync(AuthController.verifyEmail))
-
 export default router

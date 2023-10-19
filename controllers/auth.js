@@ -48,37 +48,4 @@ const logout = async (req, res, next) => {
     })
 }
 
-const forgotPassword = async (req, res) => {
-    // const resetPasswordToken = await tokenService.generateResetPasswordToken(req.body.email)
-    // await emailService.sendResetPasswordEmail(req.body.email, resetPasswordToken)
-    res.status(httpStatus.NO_CONTENT).send()
-}
-
-const resetPassword = async (req, res) => {
-    // await authService.resetPassword(req.query.token, req.body.password)
-    res.status(httpStatus.NO_CONTENT).send()
-}
-
-const sendVerificationEmail = async (req, res) => {
-    // const verifyEmailToken = await tokenService.generateVerifyEmailToken(req.user)
-    // await emailService.sendVerificationEmail(req.user.email, verifyEmailToken)
-    res.status(httpStatus.NO_CONTENT).send()
-}
-
-const verifyEmail = async (req, res) => {
-    // await authService.verifyEmail(req.query.token)
-    res.status(httpStatus.NO_CONTENT).send()
-}
-
-export {
-    registerForm,
-    register,
-    loginForm,
-    login,
-    google,
-    logout,
-    forgotPassword,
-    resetPassword,
-    sendVerificationEmail,
-    verifyEmail,
-}
+export { registerForm, register, loginForm, login, google, logout }
