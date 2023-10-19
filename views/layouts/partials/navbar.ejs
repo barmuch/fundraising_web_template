@@ -51,34 +51,34 @@
             <ul class="navbar-nav">
                 <% if (!currentUser) { %>
                 <li class="nav-item">
-                    <a class="nav-link bg-login" href="/login">Login</a>
+                    <a class="nav-link bg-login" href="/auth/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link bg-login" href="/register">Register</a>
+                    <a class="nav-link bg-login" href="/auth/register">Register</a>
                 </li>
                 <% } else if(currentUser && currentUser.role === 'admin') { %>
                 <li class="nav-item">
                     <a
                         class="nav-link bg-login"
-                        href="/logout"
+                        href="/auth/logout"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         >Logout</a
                     >
-                    <form action="/logout" method="POST" style="display: none" id="logout-form"></form>
+                    <form action="/auth/logout" method="POST" style="display: none" id="logout-form"></form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link bg-login" href="/admin">Dashboard</a>
                 </li>
                 <% }else {%>
-                    <li class="nav-item">
-                        <a
-                            class="nav-link bg-login"
-                            href="/logout"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                            >Logout</a
-                        >
-                        <form action="/logout" method="POST" style="display: none" id="logout-form"></form>
-                    </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link bg-login"
+                        href="/auth/logout"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        >Logout</a
+                    >
+                    <form action="/auth/logout" method="POST" style="display: none" id="logout-form"></form>
+                </li>
                 <% } %>
             </ul>
         </div>
