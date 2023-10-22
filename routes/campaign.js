@@ -1,6 +1,6 @@
 import express from 'express'
 
-import * as CampaignController from '../controllers/campaigns.js'
+import * as campaignController from '../controllers/campaigns.js'
 
 import isAdmin from '../middlewares/isAdmin.js'
 import { isAuthorPlace } from '../middlewares/isAuthor.js'
@@ -13,20 +13,27 @@ import upload from '../configs/multer.js'
 
 const router = express.Router()
 
-router.route('/').post(upload.array('image', 5), validateCampaign, wrapAsync(CampaignController.store))
+router.route('/').post(upload.array('image', 5), validateCampaign, wrapAsync(campaignController.store))
 
-router.get('/create', isAdmin, CampaignController.create)
+router.get('/create', isAdmin, campaignController.create)
 
-router.get('/index', CampaignController.index)
+router.get('/index', campaignController.index)
 
 router
     .route('/:id')
-    .get(isValidObjectId('/campaigns'), wrapAsync(CampaignController.show))
-    .put(upload.array('image', 5), wrapAsync(CampaignController.update))
-    .delete(wrapAsync(CampaignController.destroy))
+    .get(isValidObjectId('/campaigns'), wrapAsync(campaignController.show))
+    .put(upload.array('image', 5), wrapAsync(campaignController.update))
+    .delete(wrapAsync(campaignController.destroy))
 
-router.get('/:id/edit', isAdmin, wrapAsync(CampaignController.edit))
+router.get('/:id/edit', isAdmin, wrapAsync(campaignController.edit))
 
-router.delete('/:id/images', wrapAsync(CampaignController.destroyImages))
+router.delete('/:id/images', wrapAsync(campaignController.destroyImages))
+
+router.route('/payment/notification').post(wrapAsync(campaignController.handleTransactionNotification))
+
+router
+    .route('/payment/:campaignId')
+    .get(wrapAsync(campaignController.payment))
+    .post(wrapAsync(campaignController.createTransaction))
 
 export default router
