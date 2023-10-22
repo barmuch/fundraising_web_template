@@ -12,7 +12,9 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total Donasi (Bulan ini)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 40.000.000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <%= data.totalThisMonthDonationsAmount %>
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -31,7 +33,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Total Semua Donasi
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 215.000.000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= data.total %></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -89,7 +91,7 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">20 Transaksi Terbaru</h6>
+                    <h6 class="m-0 font-weight-bold text-primary"><%= data.donations.length %> Transaksi Terbaru</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -115,86 +117,16 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                <% for (const transaction of data.donations) { %>
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>$320,800</td>
-                                    <td>berhasil</td>
+                                    <td><%= transaction.donorName %></td>
+                                    <td><%= transaction.noWa ?? '-' %></td>
+                                    <td><%= transaction.donorEmail %></td>
+                                    <td><%= transaction.campaign.title %></td>
+                                    <td><%= transaction.amount %></td>
+                                    <td><%= transaction.status %></td>
                                 </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>$170,750</td>
-                                    <td>berhasil</td>
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>San Francisco</td>
-                                    <td>66</td>
-                                    <td>$86,000</td>
-                                    <td>pending</td>
-                                </tr>
-                                <tr>
-                                    <td>Cedric Kelly</td>
-                                    <td>Senior Javascript Developer</td>
-                                    <td>Edinburgh</td>
-                                    <td>22</td>
-                                    <td>$433,060</td>
-                                    <td>dibatalkan</td>
-                                </tr>
-                                <tr>
-                                    <td>Airi Satou</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>33</td>
-                                    <td>$162,700</td>
-                                    <td>berhasil</td>
-                                </tr>
-                                <tr>
-                                    <td>Brielle Williamson</td>
-                                    <td>Integration Specialist</td>
-                                    <td>New York</td>
-                                    <td>61</td>
-                                    <td>$372,000</td>
-                                    <td>berhasil</td>
-                                </tr>
-                                <tr>
-                                    <td>Herrod Chandler</td>
-                                    <td>Sales Assistant</td>
-                                    <td>San Francisco</td>
-                                    <td>59</td>
-                                    <td>$137,500</td>
-                                    <td>berhasil</td>
-                                </tr>
-                                <tr>
-                                    <td>Rhona Davidson</td>
-                                    <td>Integration Specialist</td>
-                                    <td>Tokyo</td>
-                                    <td>55</td>
-                                    <td>$327,900</td>
-                                    <td>berhasil</td>
-                                </tr>
-                                <tr>
-                                    <td>Colleen Hurst</td>
-                                    <td>Javascript Developer</td>
-                                    <td>San Francisco</td>
-                                    <td>39</td>
-                                    <td>$205,500</td>
-                                    <td>berhasil</td>
-                                </tr>
-                                <tr>
-                                    <td>Sonya Frost</td>
-                                    <td>Software Engineer</td>
-                                    <td>Edinburgh</td>
-                                    <td>23</td>
-                                    <td>$103,600</td>
-                                    <td>berhasil</td>
-                                </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
