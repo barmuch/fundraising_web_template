@@ -283,11 +283,8 @@ export const handleTransactionNotification = async (req, res) => {
     )
 
     //TODO: send notification email to client
-    if (transactionStatus == 'success') {
-        await emailService.sendPaymentNotificationEmail(donation.donorEmail, 'Thank you for your donation')
-    } else if (transactionStatus == 'cancel') {
-        await emailService.sendPaymentNotificationEmail(donation.donorEmail, 'Payment cancelled')
-    }
+    let emailMessage = 'Payment complete with status ' + donation.status
+    await emailService.sendPaymentNotificationEmail(donation.donorEmail, emailMessage)
 
     res.status(httpStatus.NO_CONTENT).send('Transaction notification received')
 }
