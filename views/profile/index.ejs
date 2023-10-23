@@ -1,0 +1,24 @@
+<% layout('layouts/app') %>
+
+<!-- ======= Intro Single ======= -->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="card mx-auto" style="width: 21rem">
+                <div class="card-header">
+                    <div class="card-title">Profile Information</div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Username:</strong> <%= user[0].username %><br />
+                        <strong>Email:</strong> <%= user[0].email %><br />
+                        <strong>Verified:</strong> <%= user[0].isEmailVerified %>
+                    </p>
+                    <% if (!user[0].isEmailVerified) { %>
+                    <a href="/auth/send-verification-email" class="btn btn-primary">Verify Email</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
