@@ -1,6 +1,4 @@
 import bcrypt from 'bcrypt'
-import httpStatus from 'http-status'
-import { v4 as uuidv4 } from 'uuid'
 
 import User from '../models/user.js'
 import UserVerification from '../models/userVerification.js'
