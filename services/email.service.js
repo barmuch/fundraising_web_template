@@ -55,3 +55,17 @@ export const sendVerificationEmail = async (userId, email) => {
         }
     })
 }
+
+export const sendPaymentNotificationEmail = async (email, message) => {
+    const mailOptions = {
+        from: config.email.from,
+        to: email,
+        subject: 'Payment Verification',
+        html: `<p>${message}</p>`,
+    }
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            throw new Error('Error sending payment notification email')
+        }
+    })
+}
