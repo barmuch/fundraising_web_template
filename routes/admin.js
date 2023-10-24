@@ -24,12 +24,12 @@ router.get('/donatur', isAdmin, (req, res) => {
 
 router.get('/campaigns', isAdmin, async (req, res) => {
     const campaigns = await Campaign.find()
-    res.render('dashboard/campaigns', { campaigns })
+    res.render('dashboard/campaigns/index', { campaigns })
 })
 
 router.get('/articles', isAdmin, async (req, res) => {
     const articles = await Article.find()
-    res.render('dashboard/articles', { articles })
+    res.render('dashboard/articles/index', { articles })
 })
 
 router.get('/index', isAdmin, CampaignController.index)

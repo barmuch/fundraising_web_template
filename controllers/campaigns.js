@@ -12,7 +12,7 @@ const index = async (req, res) => {
 }
 
 const create = (req, res) => {
-    res.render('campaigns/create.ejs')
+    res.render('dashboard/campaigns/create.ejs')
 }
 
 const store = async (req, res, next) => {
@@ -42,7 +42,7 @@ const show = async (req, res) => {
 const edit = async (req, res) => {
     const campaign = await Campaign.findById(req.params.id)
     const user = req.user
-    res.render('campaigns/edit', { campaign, user })
+    res.render('dashboard/campaigns/edit', { campaign, user })
 }
 
 const update = async (req, res) => {

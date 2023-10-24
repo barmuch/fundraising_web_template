@@ -11,7 +11,7 @@ const index = async (req, res) => {
 }
 
 const create = (req, res) => {
-    res.render('articles/create.ejs')
+    res.render('dashboard/articles/create.ejs')
 }
 
 const store = async (req, res, next) => {
@@ -40,7 +40,7 @@ const show = async (req, res) => {
 
 const edit = async (req, res) => {
     const article = await Article.findById(req.params.id)
-    res.render('articles/edit', { article })
+    res.render('dashboard/articles/edit', { article })
 }
 
 const update = async (req, res) => {

@@ -1,0 +1,104 @@
+<% layout('layouts/dashboard/app') %>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Daftar Articles</h1>
+    <a href="/articles/create" class="card-link btn btn-success text-white">Tambahkan article Baru</a>
+    <br /><br />
+    <!-- Content Row -->
+    <div class="row">
+        <% for (const article of articles) { %>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-6 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
+                                <%= article.title %>
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">viewer : 500</div>
+                        </div>
+                    </div>
+                    <br />
+                    <a href="/articles/<%= article._id %>/edit" class="card-link btn btn-success text-white">Edit</a>
+                    <form
+                        action="/articles/<%= article._id %>?_method=DELETE"
+                        method="POST"
+                        style="display: inline !important">
+                        <button type="submit" class="btn btn-success">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <% } %>
+    </div>
+
+    <!-- Content Row -->
+
+    <!-- Content Row -->
+    <!-- Begin Page Content -->
+    <div class="container-fluid"></div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->
+
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Ummati Dev. 2023</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div
+    class="modal fade"
+    id="logoutModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="/publicDB/vendor/jquery/jquery.min.js"></script>
+<script src="/publicDB/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/publicDB/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/publicDB/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/publicDB/vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/publicDB/js/demo/chart-area.js"></script>
+<script src="/publicDB/js/demo/chart-pie-demo.js"></script>
