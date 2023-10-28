@@ -16,7 +16,7 @@ export const index = async (req, res) => {
     res.render('campaigns/index.ejs', { campaigns, user })
 }
 
-const create = (req, res) => {
+export const create = (req, res) => {
     res.render('dashboard/campaigns/create.ejs')
 }
 

@@ -1,50 +1,109 @@
-<% layout('layouts/app') %>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<section class="intro-single">
-    <div class="container">
-        <div class="row">
-            <form action="/campaigns/payment/<%= campaign._id %>" method="POST" novalidate class="validated-form">
-                <h1>Form Donasi</h1>
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input
-                        required
-                        type="text"
-                        class="form-control"
-                        id="username"
-                        name="payment[username]"
-                        aria-describedby="emailHelp"
-                        value="<%= user.username %>" />
+        <title>Fundraising Web</title>
+        <meta content="" name="description" />
+        <meta content="" name="keywords" />
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+
+        <!-- favicon -->
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+        <link rel="manifest" href="/images/site.webmanifest" />
+
+        <!-- Vendor CSS Files -->
+        <link href="/vendor/animate.css/animate.min.css" rel="stylesheet" />
+        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+        <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+        <!-- Template Main CSS File -->
+        <link href="/css/formDonasi.css" rel="stylesheet" />
+        <!-- Tiny -->
+    </head>
+    <body>
+        <div class="container p-0">
+            <div class="card px-4">
+                <p class="h8 py-3">Form Donasi</p>
+                <div class="row gx-3">
+                    <form
+                        action="/campaigns/payment/<%= campaign._id %>"
+                        method="POST"
+                        novalidate
+                        class="validated-form">
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <label for="username" class="form-label text mb-1">Username</label>
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    id="username"
+                                    name="payment[username]"
+                                    aria-describedby="emailHelp"
+                                    value="<%= user.username %>" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <label for="email" class="form-label text mb-1">Alamat Email </label>
+                                <input
+                                    required
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    name="payment[email]"
+                                    aria-describedby="emailHelp"
+                                    value="<%= user.email %>" />
+                                <div id="emailHelp" class="form-text">
+                                    We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <label for="title" class="form-label text mb-1">Campaign Title</label>
+                                <input
+                                    required
+                                    disabled
+                                    readonly
+                                    type="text"
+                                    class="form-control"
+                                    aria-describedby="emailHelp"
+                                    value="<%= campaign.title %>" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="form-label text mb-1">Jumlah</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="amount"
+                                name="payment[amount]"
+                                placeholder="100000"
+                                required />
+                            <div id="amountHelp" class="form-text">isi dengan angka (contoh: 10000, 20000)</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary align-self-center">Donasi</button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Alamat Email address</label>
-                    <input
-                        required
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        name="payment[email]"
-                        aria-describedby="emailHelp"
-                        value="<%= user.email %>" />
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="title" class="form-label">Campaign Title</label>
-                    <input
-                        required
-                        disabled
-                        readonly
-                        type="text"
-                        class="form-control"
-                        aria-describedby="emailHelp"
-                        value="<%= campaign.title %>" />
-                </div>
-                <div class="mb-3">
-                    <label for="amount" class="form-label">Jumlah</label>
-                    <input type="number" class="form-control" id="amount" name="payment[amount]" required />
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </div>
         </div>
-    </div>
-</section>
+
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"
+            ><i class="bi bi-arrow-up-short"></i
+        ></a>
+
+        <!-- Vendor JS Files -->
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="/js/main.js"></script>
+    </body>
+</html>
