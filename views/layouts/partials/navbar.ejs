@@ -26,15 +26,7 @@
                         >Campaign</a
                     >
                 </li>
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Donasi
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="zakat-profesi.html">Zakat Profesi</a></li>
-                    <li><a class="dropdown-item" href="#">Zakat Harta</a></li>
-                  </ul>
-                </li> -->
+
                 <li class="nav-item">
                     <a class="nav-link <%= currentPage === '/articles/index' ? 'active' : '' %>" href="/articles/index"
                         >Berita</a
@@ -50,8 +42,32 @@
 
             <ul class="navbar-nav">
                 <% if (currentUser) { %>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/<%= currentUser.username %>">Profile</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Profile
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item"><strong>Username:</strong> <%= currentUser.username %><br /></a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"><strong>Email:</strong> <%= currentUser.email %><br /></a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                ><strong>Verified:</strong> <%= currentUser.isEmailVerified %><br
+                            /></a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item ml-5"
+                                ><% if (!currentUser.isEmailVerified) { %>
+                                <a href="/auth/send-verification-email" class="btn btn-primary"
+                                    ><strong>Verify Email</strong></a
+                                >
+                                <% } %><br
+                            /></a>
+                        </li>
+                    </ul>
                 </li>
                 <% } %> <% if (!currentUser) { %>
                 <li class="nav-item">
