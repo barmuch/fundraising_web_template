@@ -26,7 +26,8 @@ export const storeArticle = async (req, res, next) => {
 
 export const editArticle = async (req, res) => {
     const article = await Article.findById(req.params.id)
-    res.render('dashboard/articles/edit', { article })
+    const user = req.user
+    res.render('dashboard/articles/edit', { article, user })
 }
 
 export const updateArticle = async (req, res) => {
@@ -45,7 +46,7 @@ export const updateArticle = async (req, res) => {
     }
 
     req.flash('success_msg', 'article Updated!')
-    res.redirect(`/admin/articles`)
+    res.redirect(`/admin/articles/${article._id}`)
 }
 
 export const destroyArticle = async (req, res) => {
@@ -54,7 +55,7 @@ export const destroyArticle = async (req, res) => {
 
     if (!article) {
         req.flash('error_msg', 'Article not found')
-        return res.redirect('/')
+        return res.redirect('/admin/articles')
     }
 
     // delete image in cloudinary
@@ -92,6 +93,7 @@ export const destroyImagesArticle = async (req, res) => {
 
         article.images = newImages
         await article.save()
+
         req.flash('success_msg', 'Successfully deleted images')
         return res.redirect(`/admin/articles/${id}`)
     } catch (err) {

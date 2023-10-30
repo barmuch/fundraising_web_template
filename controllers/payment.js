@@ -18,7 +18,7 @@ export const payment = async (req, res) => {
     const campaign = await Campaign.findById(campaignId)
     if (!campaign) {
         req.flash('error_msg', 'Campaign not found')
-        return res.redirect('/')
+        return res.redirect('/admin/campaigns')
     }
 
     if (currentUser && currentUser._id && currentUser.username) {
@@ -41,7 +41,7 @@ export const createTransaction = async (req, res) => {
 
     if (!campaign) {
         req.flash('error_msg', 'Campaign not found')
-        return res.redirect('/')
+        return res.redirect('/admin/campaigns')
     }
 
     function createUniqueString() {
@@ -93,7 +93,7 @@ export const createTransaction = async (req, res) => {
     const savedDonation = await donation.save()
     if (!savedDonation) {
         req.flash('error_msg', 'Failed to create donation model')
-        return res.redirect('/')
+        return res.redirect('/admin/campaigns')
     }
 
     const redirectUrl = await midtransService.createTransactionRedirectUrl(parameter)

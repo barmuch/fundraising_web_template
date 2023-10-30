@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Daftar Campaigns</h1>
-    <a href="/campaigns/create" class="card-link btn btn-success text-white">Tambahkan Campaign Baru</a>
+    <a href="/admin/campaigns/create" class="card-link btn btn-success text-white">Tambahkan Campaign Baru</a>
     <br /><br />
     <!-- Content Row -->
     <div class="row">
@@ -21,9 +21,9 @@
                         </div>
                     </div>
                     <br />
-                    <a href="/campaigns/<%= campaign._id %>/edit" class="card-link btn btn-success text-white">Edit</a>
+                    <a href="/admin/campaigns/<%= campaign._id %>" class="card-link btn btn-success text-white">Edit</a>
                     <form
-                        action="/campaigns/<%= campaign._id %>?_method=DELETE"
+                        action="/admin/campaigns/<%= campaign._id %>?_method=DELETE"
                         method="POST"
                         style="display: inline !important">
                         <button type="submit" class="btn btn-success">Delete</button>

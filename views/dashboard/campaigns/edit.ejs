@@ -1,10 +1,11 @@
-<% layout('layouts/app') %>
-<section class="section-property section-t8">
+<% layout('layouts/dashboard/app') %>
+<!-- Begin Page Content -->
+<div class="container-fluid">
     <div class="row mb-5 mt-10 px-4">
         <h1 class="text-center">Edit Campaign</h1>
         <div class="col-6">
             <form
-                action="/campaigns/<%= campaign._id %>?_method=PUT"
+                action="/admin/campaigns/<%= campaign._id %>?_method=PUT"
                 method="POST"
                 class="validated-form"
                 novalidate
@@ -57,7 +58,10 @@
                 <input type="checkbox" class="form-check-input" id="checkAll" />
                 <label class="form-check-label" for="checkAll">Check All</label>
             </div>
-            <form action="/campaigns/<%= campaign._id %>/images?_method=DELETE" method="post" class="d-flex flex-wrap">
+            <form
+                action="/admin/campaigns/<%= campaign._id %>/images?_method=DELETE"
+                method="post"
+                class="d-flex flex-wrap">
                 <% campaign.images.forEach((image, index) => {%>
                 <div class="col-md-4">
                     <div class="card mb-3">
@@ -77,7 +81,8 @@
         </div>
         <% } %>
     </div>
-</section>
+</div>
+
 <script>
     document.getElementById('checkAll').addEventListener('change', function () {
         const checkboxes = document.getElementsByName('images[]')

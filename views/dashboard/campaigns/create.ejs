@@ -1,10 +1,15 @@
-<% layout('layouts/app') %>
-
-<section class="section-property section-t8">
-    <div class="row">
+<% layout('layouts/dashboard/app') %>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="row m-5">
         <h1 class="text-center">Add New Campaign</h1>
-        <div class="col-6 offset-3">
-            <form action="/campaigns" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+        <div class="col">
+            <form
+                action="/admin/campaigns/create"
+                method="POST"
+                novalidate
+                class="validated-form"
+                enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" name="campaign[title]" id="title" class="form-control" required />
@@ -33,4 +38,4 @@
             </form>
         </div>
     </div>
-</section>
+</div>
