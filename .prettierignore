@@ -1,2 +1,5 @@
 coverage
 **/vendor/*
+
+views/layouts/
+views/dashboard/index.ejs
