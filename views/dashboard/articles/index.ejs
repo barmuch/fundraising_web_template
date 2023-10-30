@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Daftar Articles</h1>
-    <a href="/articles/create" class="card-link btn btn-success text-white">Tambahkan article Baru</a>
+    <a href="/admin/articles/create" class="card-link btn btn-success text-white">Tambahkan article Baru</a>
     <br /><br />
     <!-- Content Row -->
     <div class="row">
@@ -21,9 +21,9 @@
                         </div>
                     </div>
                     <br />
-                    <a href="/articles/<%= article._id %>/edit" class="card-link btn btn-success text-white">Edit</a>
+                    <a href="/admin/articles/<%= article._id %>" class="card-link btn btn-success text-white">Edit</a>
                     <form
-                        action="/articles/<%= article._id %>?_method=DELETE"
+                        action="/admin/articles/<%= article._id %>?_method=DELETE"
                         method="POST"
                         style="display: inline !important">
                         <button type="submit" class="btn btn-success">Delete</button>
