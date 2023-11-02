@@ -15,11 +15,32 @@
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet" />
 
+             <!-- Vendor CSS Files -->
+        <link href="/vendor/animate.css/animate.min.css" rel="stylesheet" />
+        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+        <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
         <!-- Custom styles for this template-->
         <link href="/publicDB/css/sb-admin-2.min.css" rel="stylesheet" />
+
+           <!-- Tiny -->
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
 
     <body id="page-top">
-        <%- include('partials/navbar') %> <%- body %>
+        <%- include('partials/navbar') %> <%- include('partials/alert') %> <%- body %>
+
+         <!-- Vendor JS Files -->
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+         <!-- tiny -->
+        <script>
+            tinymce.init({
+                selector: '#description',
+            })
+        </script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </body>
 </html>

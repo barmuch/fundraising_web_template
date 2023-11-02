@@ -1,48 +1,57 @@
-<% layout('layouts/app') %>
-<section class="section-property section-t8">
-    <div class="row mb-5 mt-10 px-4">
-        <h1 class="text-center">Edit Article</h1>
-        <div class="col-6 <%= !article.images.length > 0 ? 'offset-3' : '' %>">
-            <form
-                action="/articles/<%= article._id %>?_method=PUT"
-                method="POST"
-                class="validated-form"
-                novalidate
-                enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input
-                        type="text"
-                        name="article[title]"
-                        id="title"
-                        class="form-control"
-                        value="<%= article.title %>"
-                        required />
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea name="article[description]" id="description" class="form-control" required>
-<%= article.description %></textarea
-                    >
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
+<% layout('layouts/dashboard/app') %>
 
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input type="file" name="image" id="image" accept="image/*" multiple />
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </form>
+<!-- Begin Page Content -->
+<div class="container-fluid m-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Edit Article</h1>
+        </div>
+        <div class="col-8">
+            <div class="<%= !article.images.length > 0 ? 'offset-3' : '' %>">
+                <form
+                    action="/admin/articles/<%= article._id %>?_method=PUT"
+                    method="POST"
+                    class="validated-form"
+                    novalidate
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input
+                            type="text"
+                            name="article[title]"
+                            id="title"
+                            class="form-control"
+                            value="<%= article.title %>"
+                            required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="article[description]" id="description" class="form-control" required>
+<%= article.description %></textarea
+                        >
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" name="image" id="image" accept="image/*" multiple />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
         </div>
         <% if(article.images.length > 0) {%>
-        <div class="col-6">
+        <div class="col-4">
             <h5 class="text-center">Delete Images</h5>
-            <form action="/articles/<%= article._id %>/images?_method=DELETE" method="post" class="d-flex flex-wrap">
+            <form
+                action="/admin/articles/<%= article._id %>/images?_method=DELETE"
+                method="post"
+                class="d-flex flex-wrap">
                 <% article.images.forEach((image, index) => {%>
                 <div class="col-md-4">
                     <div class="card mb-3">
@@ -62,7 +71,8 @@
         </div>
         <% } %>
     </div>
-</section>
+    <!-- end row -->
+</div>
 <script>
     document.getElementById('checkAll').addEventListener('change', function () {
         const checkboxes = document.getElementsByName('images[]')
